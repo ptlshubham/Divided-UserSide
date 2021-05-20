@@ -1,0 +1,8 @@
+.single-product__floating-icons {
+    position: absolute;
+    top: 80px !important;
+    right: 20px;
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,80 @@
+<body style="overflow-x:hidden;height:100%;width:100%">
+    <app-navbaruser class="sticky-head"></app-navbaruser>
+
+    <div class="breadcrumb-area breadcrumb-bg-1 pt-50 pb-70 mb-130">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="breadcrumb-title">Wishlist</h1>
+
+
+                    <ul class="breadcrumb-list">
+                        <li class="breadcrumb-list__item"><a href="index.html">HOME</a></li>
+                        <li class="breadcrumb-list__item breadcrumb-list__item--active">wishlist</li>
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="shopping-cart-area mb-130">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="cart-table-container">
+                        <table class="cart-table">
+                            <thead>
+                                <tr>
+                                    <th class="product-name" colspan="2">Product</th>
+                                    <th class="product-price">Price</th>
+                                    <th class="product-quantity">Quantity</th>
+                                    <th class="product-subtotal">&nbsp;</th>
+                                    <th class="product-remove">&nbsp;</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr *ngFor="let w of wishList,let i=index">
+                                    <td class="product-thumbnail">
+                                        <a>
+                                            <img src="http://localhost:8090{{w.productMainImage}}" class="img-fluid" alt="">
+                                        </a>
+                                    </td>
+                                    <td class="product-name">
+                                        <a>{{w.productName}}</a>
+                                        <span class="product-variation">{{w.brandName}}</span>
+                                    </td>
+
+                                    <td class="product-price"><span class="price">{{w.productPrice}}</span></td>
+
+                                    <td class="product-quantity">
+                                        <div class="pro-qty d-inline-block mx-0">
+                                            <input type="text" value="1">
+                                        </div>
+                                    </td>
+
+                                    <td class="add-to-cart" (click)="addWishToCart(w)"><button class="lezada-button lezada-button--small lezada-button--icon--left"> <i class="ion-ios-cart-outline"></i> add to cart</button></td>
+
+                                    <td class="product-remove">
+                                        <a (click)="removeWishItem(i,w.id)">
+                                            <i class="ion-android-close"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <app-footer></app-footer>
+</body>

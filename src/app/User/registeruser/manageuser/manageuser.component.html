@@ -1,0 +1,354 @@
+<body style="overflow-x:hidden;height:100%;width:100%">
+    <app-navbaruser class="sticky-head"></app-navbaruser>
+    <div class="breadcrumb-area breadcrumb-bg-1 pt-50 pb-70 mb-50" style="margin-top:86px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="breadcrumb-title">My Account</h1>
+
+                    <!--=======  breadcrumb list  =======-->
+
+                    <ul class="breadcrumb-list">
+                        <li class="breadcrumb-list__item"><a href="index.html">HOME</a></li>
+                        <li class="breadcrumb-list__item breadcrumb-list__item--active">My Account</li>
+                    </ul>
+
+                    <!--=======  End of breadcrumb list  =======-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="my-account-area mb-130 mb-md-70 mb-sm-70 mb-xs-70 mb-xxs-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a class="active" (click)="dashboad()" data-toggle="tab">
+                                    Dashboard</a>
+                                <a (click)="orders()" data-toggle="tab"> Orders</a>
+                                <a (click)="download()" data-toggle="tab"> Download</a>
+                                <a (click)="paymentmethod()" data-toggle="tab"> Payment Method</a>
+                                <a (click)="addressedit()" data-toggle="tab"> address</a>
+                                <a (click)="accountinfo()" data-toggle="tab"> Account Details</a>
+                                <!-- <a (click)="logoutUser()"> Logout</a> -->
+                            </div>
+                        </div>
+                        <!-- My Account Tab Menu End -->
+                        <!-- My Account Tab Content Start -->
+                        <div class="col-lg-12 col-md-12">
+                            <div class="tab-content" id="myaccountContent">
+                                <!-- Single Tab Content Start -->
+                                <div [ngClass]="dashboardclass" id="dashboad" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <h3>Dashboard</h3>
+                                        <div class="welcome">
+                                            <p>Hello, <strong>{{localUserName}}</strong> </p>
+                                        </div>
+
+                                        <p class="mb-0">From your account dashboard. you can easily check & view your
+                                            recent orders, manage your
+                                            shipping and billing addresses and edit your password and account details.
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- Single Tab Content End -->
+                                <!-- Single Tab Content Start -->
+                                <div [ngClass]="ordersclass" id="orders" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <h3>Orders</h3>
+                                        <div class="myaccount-table table-responsive text-center">
+                                            <table class="table table-bordered">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th>Order</th>
+                                                        <th>Product</th>
+                                                        <th>Date</th>
+                                                        <th>Status</th>
+                                                        <th>Total</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let u of ordersUser;let i=index">
+                                                        <td>{{i+1}}</td>
+                                                        <td (click)="productDetails(u.productid)"
+                                                            style="text-decoration: underline;">{{u.productName}}</td>
+                                                        <td>{{u.orderdate | date}}</td>
+                                                        <td>{{u.status}}</td>
+                                                        <td>₹ {{u.productPrice}}</td>
+                                                        <td><a (click)="viewOrdersDetails(u)" class="check-btn sqr-btn ">View</a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Single Tab Content End -->
+                                <!-- Single Tab Content Start -->
+                                <div [ngClass]="downloadclass" id="download" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <h3>Downloads</h3>
+                                        <div class="myaccount-table table-responsive text-center">
+                                            <table class="table table-bordered">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th>Product</th>
+                                                        <th>Date</th>
+                                                        <th>Expire</th>
+                                                        <th>Download</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Haven - Free Real Estate PSD Template</td>
+                                                        <td>Aug 22, 2018</td>
+                                                        <td>Yes</td>
+                                                        <td><a href="#" class="check-btn sqr-btn "><i
+                                                                    class="fa fa-cloud-download"></i> Download File</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>HasTech - Profolio Business Template</td>
+                                                        <td>Sep 12, 2018</td>
+                                                        <td>Never</td>
+                                                        <td><a href="#" class="check-btn sqr-btn "><i
+                                                                    class="fa fa-cloud-download"></i> Download File</a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Single Tab Content End -->
+                                <!-- Single Tab Content Start -->
+                                <div [ngClass]="paymentmethodclass" id="payment-method" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <h3>Payment Method</h3>
+                                        <p class="saved-message">You Can't Saved Your Payment Method yet.</p>
+                                    </div>
+                                </div>
+                                <!-- Single Tab Content End -->
+                                <!-- Single Tab Content Start -->
+                                <div [ngClass]="addresseditclass" id="address-edit" role="tabpanel">
+
+                                    <div class="myaccount-content" *ngIf="!isShow">
+                                        <div class="single-input-item">
+                                            <button class="check-btn sqr-btn-butn" (click)="addAddress()">Add New
+                                                Address</button>
+                                        </div>
+                                    </div>
+                                    <div class="myaccount-content" *ngIf="isShow">
+                                        <h3>Manage Address</h3>
+                                        <div class="account-details-form">
+                                            <form name="mainCateRegForm" #mainCateRegForm="ngForm"
+                                                (ngSubmit)="onSubmit()">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="single-input-item">
+                                                            <label for="name" class="required">Name</label>
+                                                            <input type="text" id="name" name="name"
+                                                                class="form-control"
+                                                                [(ngModel)]="userAddressModel.name" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="single-input-item">
+                                                            <label for="contact-number" class="required">Contact
+                                                                Number</label>
+                                                            <input type="text" id="contactnumber" name="contactnumber"
+                                                                class="form-control"
+                                                                [(ngModel)]="userAddressModel.contactnumber" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="single-input-item">
+                                                            <label for="pincode" class="required">Pincode</label>
+                                                            <input type="text" id="pincode" name="pincode"
+                                                                class="form-control"
+                                                                [(ngModel)]="userAddressModel.pincode" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="single-input-item">
+                                                            <label for="locality" class="required">Locality</label>
+                                                            <input type="text" id="locality" name="locality"
+                                                                class="form-control"
+                                                                [(ngModel)]="userAddressModel.locality" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="single-input-item">
+                                                            <label for="address" class="required"
+                                                                style="text-transform:none">Address (Area and
+                                                                Street)</label>
+                                                            <textarea class="form-control-custom" rows="4" id="address"
+                                                                name="address" class="form-control"
+                                                                [(ngModel)]="userAddressModel.address"
+                                                                style="border: 1px solid #e8e8e8 !important;"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="single-input-item">
+                                                            <label for="city"
+                                                                class="required">City/District/Town</label>
+                                                            <input type="text" id="city" name="city"
+                                                                class="form-control"
+                                                                [(ngModel)]="userAddressModel.city" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6">
+                                                        <div class="dropdown form-group">
+                                                            <label for="city" class="required">Select State</label>
+                                                            <button
+                                                                class="dropdown-toggle btn btn-primary btn-round btn-block"
+                                                                type="button" name="dropdownMenuButton"
+                                                                id="dropdownMenuButton" data-toggle="dropdown"
+                                                                aria-haspopup="true"
+                                                                aria-expanded="false">{{selectedstate}}
+
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right"
+                                                                aria-labelledby="dropdownMenuButton">
+                                                                <div class="dropdown-header">Select State</div>
+                                                                <div *ngFor="let s of stateList">
+                                                                    <a class="dropdown-item"
+                                                                        (click)="selectStateList(s.id)">{{s.name}}</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="single-input-item">
+                                                            <label for="landmark" class="required">Landmark
+                                                                (Optional)</label>
+                                                            <input type="text" id="landmark" name="landmark"
+                                                                class="form-control"
+                                                                [(ngModel)]="userAddressModel.landmark" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="single-input-item">
+                                                            <label for="alternative" class="required">Alternative Phone
+                                                                (Optional)</label>
+                                                            <input type="text" id="alternativeno" name="alternativeno"
+                                                                class="form-control"
+                                                                [(ngModel)]="userAddressModel.alternativeno" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="single-input-item">
+                                                    <div class="row">
+                                                        <div class="col-sm-7"></div>
+                                                        <div class="col-sm-5" style="margin-left: 64%;">
+                                                            <button class="check-btn sqr-btn" (click)="saveAddress()"
+                                                                *ngIf="userAddressModel.id == undefined">Save </button>
+                                                            <button class="check-btn sqr-btn" (click)="UpdateAddress()"
+                                                                *ngIf="userAddressModel.id != undefined">Update</button>
+
+                                                            <button class="check-btn sqr-btn-cancel"
+                                                                (click)="cancelAddress()">Cancel</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <br>
+                                    <div class="myaccount-content">
+                                        <h3>Billing Address</h3>
+                                        <div class="row">
+                                            <div class="col-md-3" *ngFor="let add of userAddress">
+                                                <address>
+                                                    <p><strong>{{add.name}}</strong></p>
+                                                    <p>{{add.address}},{{add.landmark}},{{add.city}}<br>
+                                                        {{add.state}},{{add.pincode}}</p>
+                                                    <p>Mobile:{{add.contactnumber}}</p>
+                                                </address>
+                                                <a (click)="editUserAddress(add)" class="check-btn sqr-btn "><i
+                                                        class="fa fa-edit"></i> Edit</a> &nbsp;
+                                                <a (click)="removeUserAddress(add)" class="check-btn sqr-btn "><i
+                                                        class="fa fa-times"></i> Delete</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- Single Tab Content End -->
+                                <!-- Single Tab Content Start -->
+                                <div [ngClass]="accountinfoclass" id="account-info" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <h3>Account Details</h3>
+                                        <div class="account-details-form">
+                                            <form action="#">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="single-input-item">
+                                                            <label for="first-name" class="required">First Name</label>
+                                                            <input type="text" id="first-name" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="single-input-item">
+                                                            <label for="last-name" class="required">Last Name</label>
+                                                            <input type="text" id="last-name" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="single-input-item">
+                                                    <label for="display-name" class="required">Display Name</label>
+                                                    <input type="text" id="display-name" />
+                                                </div>
+                                                <div class="single-input-item">
+                                                    <label for="email" class="required">Email Addres</label>
+                                                    <input type="email" id="email" />
+                                                </div>
+                                                <fieldset>
+                                                    <legend>Password change</legend>
+                                                    <div class="single-input-item">
+                                                        <label for="current-pwd" class="required">Current
+                                                            Password</label>
+                                                        <input type="password" id="current-pwd" />
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="single-input-item">
+                                                                <label for="new-pwd" class="required">New
+                                                                    Password</label>
+                                                                <input type="password" id="new-pwd" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="single-input-item">
+                                                                <label for="confirm-pwd" class="required">Confirm
+                                                                    Password</label>
+                                                                <input type="password" id="confirm-pwd" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                                <div class="single-input-item">
+                                                    <button class="check-btn sqr-btn ">Save Changes</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div> <!-- Single Tab Content End -->
+                            </div>
+                        </div> <!-- My Account Tab Content End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <app-footer></app-footer>
+</body>

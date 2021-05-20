@@ -1,0 +1,1 @@
+{"version":3,"file":"panels.component.js","sourceRoot":"","sources":["../../../../../../src/app/components/panels/panels.component.ts"],"names":[],"mappings":";;;;;;;;;AAAA,sCAA0C;AAQ1C;IAAA;IAA6B,CAAC;IAAjB,eAAe;QAN3B,gBAAS,CAAC;YACP,QAAQ,EAAE,MAAM,CAAC,EAAE;YACnB,QAAQ,EAAE,YAAY;YACtB,WAAW,EAAE,uBAAuB;SACvC,CAAC;OAEW,eAAe,CAAE;IAAD,sBAAC;CAAA,AAA9B,IAA8B;AAAjB,0CAAe"}

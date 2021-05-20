@@ -1,0 +1,1 @@
+{"version":3,"file":"customers.routing.js","sourceRoot":"","sources":["../../../../../src/app/customers/customers.routing.ts"],"names":[],"mappings":";;;AACA,gFAA8E;AAGjE,QAAA,eAAe,GAAW,CAAC;QACpC,IAAI,EAAE,EAAE;QACR,QAAQ,EAAE,CAAC;gBACP,IAAI,EAAE,cAAc;gBACpB,SAAS,EAAE,8CAAqB;aACnC,CAAC;KACL;CAcA,CAAC"}

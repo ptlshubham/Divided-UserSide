@@ -1,0 +1,174 @@
+<body style="overflow-x:hidden;height:100%;width:100%">
+    <app-navbaruser class="sticky-head"></app-navbaruser>
+
+
+    <!--=======  breadcrumb area =======-->
+    <div class="breadcrumb-area breadcrumb-bg-1 mt-90 pt-50 pb-70 mb-50" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="breadcrumb-title">Shopping Cart</h1>
+
+                    <!--=======  breadcrumb list  =======-->
+
+                    <ul class="breadcrumb-list">
+                        <li class="breadcrumb-list__item"><a href="index.html">HOME</a></li>
+                        <li class="breadcrumb-list__item breadcrumb-list__item--active">shopping cart</li>
+                    </ul>
+
+                    <!--=======  End of breadcrumb list  =======-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--=======  End of breadcrumb area =======-->
+    <!--=============================================
+	=            cart page content         =
+	=============================================-->
+    <div class="shopping-cart-area mb-130">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mb-30">
+                    <!--=======  cart table  =======-->
+
+                    <div class="cart-table-container">
+                        <table class="cart-table">
+                            <thead>
+                                <tr>
+                                    <th class="product-name" colspan="2">Product</th>
+                                    <th class="product-name">Size</th>
+                                    <th class="product-price">Price</th>
+                                    <th class="product-quantity">Quantity</th>
+                                    <th class="product-subtotal">Total</th>
+                                    <th class="product-remove">&nbsp;</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr *ngFor="let cl of getCartList;let i=index">
+                                    <td class="product-thumbnail">
+                                        <a (click)="getProductList(cl.productid)">
+                                            <img src="http://localhost:8090{{cl.productMainImage}}" class="img-fluid"
+                                                alt="">
+                                        </a>
+                                    </td>
+                                    <td class="product-name">
+                                        <a (click)="viewProductDetails(cl.ProductId)">{{cl.productName}}</a>
+                                        <span class="product-variation">{{cl.brandName}}</span>
+                                        <span class="product-variation">{{cl.descripition}}</span>
+                                    </td>
+                                    <td class="product-name" style="text-align: left;">
+                                        <div class="shop-product__block shop-product__block--size mb-20"  style="text-align: left;">
+                                            <div class="shop-product__block__value"  style="text-align: left;">
+                                                <div class="shop-product-size-list"  style="text-align: left;">
+                                                    <div *ngFor="let si of cl.sizelist;let j=index">
+                                                    <span style="font-size: 1rem;text-align: left;" [ngClass]="si.sizeclass"  (click)="selectSize(i,j,si.size)">{{si.size}}</span>
+                                                </div>
+                                                    <!-- <span [ngClass]="sizeclassxl"  *ngIf="isxl" (click)="selectSize('xl')">XL</span>
+                                                    <span [ngClass]="sizeclassl" *ngIf="isl" (click)="selectSize('l')">L</span>
+                                                    <span [ngClass]="sizeclassm" *ngIf="ism" (click)="selectSize('m')">M</span>
+                                                    <span [ngClass]="sizeclasss" *ngIf="iss" (click)="selectSize('s')">S</span>
+                                                    <span [ngClass]="sizeclassxs" *ngIf="isxs" (click)="selectSize('xs')">XS</span> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td class="product-price"><span class="price">₹ {{cl.productPrice}}</span></td>
+
+                                    <td class="product-quantity">
+                                        <div class="pro-qty d-inline-block mx-0">
+
+                                            <i class="fa fa-minus" aria-hidden="true" (click)="decrementQty(i)"></i>
+                                            &nbsp; &nbsp; {{ cl.quantity }} &nbsp; &nbsp;
+                                            <i class="fa fa-plus" aria-hidden="true" (click)="incrementQty(i)"></i>
+
+                                        </div>
+                                    </td>
+                                    <td class="total-price">
+                                        <span class="price">₹ {{cl.total}}</span>
+                                    </td>
+
+                                    <td class="product-remove">
+                                        <a (click)="removeCartItem(i,cl.id)">
+                                            <i class="ion-android-close"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!--=======  End of cart table  =======-->
+                </div>
+                <div class="col-lg-4">
+                    <div class="shop-product__description sidebar-sticky">
+                    <div class="cart-calculation-area">
+                        <h2 class="mb-40">Cart totals</h2>
+
+                        <table class="cart-calculation-table mb-30">
+                            <tr>
+                                <th>price ({{getCartList.length}} Items) </th>
+                                <td class="subtotal">₹ {{GrandTotal}}</td>
+                            </tr>
+                            <tr>
+                                <th>TOTAL</th>
+                                <td class="total">₹ {{GrandTotal}}</td>
+                            </tr>
+                        </table>
+
+                        <div class="cart-calculation-button text-center">
+                            <button class="lezada-button lezada-button--medium" routerLink="/checkout">proceed to checkout</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-lg-12 mb-80">
+                    <!--=======  coupon area  =======-->
+
+                    <div class="cart-coupon-area pb-30">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 mb-md-30 mb-sm-30">
+                                <!--=======  coupon form  =======-->
+
+                                <div class="lezada-form coupon-form">
+                                    <form action="#">
+                                        <div class="row">
+                                            <div class="col-md-7 mb-sm-10">
+                                                <input type="text" placeholder="Enter your coupon code">
+                                            </div>
+                                            <div class="col-md-5">
+                                                <button class="lezada-button lezada-button--medium">apply
+                                                    coupon</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <!--=======  End of coupon form  =======-->
+                            </div>
+
+                            <!-- <div class="col-lg-6 text-left text-lg-right">
+
+                                <button class="lezada-button lezada-button--medium">update cart</button>
+
+                            </div> -->
+                        </div>
+                    </div>
+
+                    <!--=======  End of coupon area  =======-->
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- scroll to top  -->
+    <a href="/cart1" class="scroll-top"></a>
+    <!-- end of scroll to top -->
+
+
+    <app-footer></app-footer>
+</body>

@@ -1,0 +1,429 @@
+<app-navbaruser class="sticky-head"></app-navbaruser>
+
+<body style="overflow-x:hidden;width:100%;">
+    <div class="section-title">
+        <div class="section" id="carousel" style="position: relative;">
+            <div class="">
+                <div class="tim-title">
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 mr-auto ml-auto ">
+                        <div class=" page-carousel">
+                            <ngb-carousel>
+                                <ng-template ngbSlide *ngFor="let b of topban">
+                                    <img src="http://localhost:8090{{b.bannersimage}}" style="height:60%;width:100%;"
+                                        alt="Random first slide">
+                                    <div class="carousel-caption">
+                                    </div>
+                                </ng-template>
+                              </ngb-carousel>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--section 2-->
+
+
+
+        <!--=====  End of section title container ======-->
+
+
+        <!--=============================================
+    =            brand logo area         =
+    =============================================-->
+
+        <div class="brand-logo-area mb-90 mb-md-60 mb-sm-60 mt-10 ">
+            <div class="container wide">
+                <div class="row">
+                    <div class="col-lg-2 col-md-4 mb-md-30 mb-sm-30">
+                        <!--=======  single brand logo  =======-->
+
+                        <div class="single-brand">
+                            <a href="#">
+                                <img src="assets/images/brands/Bridelwear.png" class="img-fluid" alt="">
+                            </a>
+                        </div>
+
+                        <!--=======  End of single brand logo  =======-->
+                    </div>
+                    <div class="col-lg-2 col-md-4 mb-md-30 mb-sm-30">
+                        <!--=======  single brand logo  =======-->
+
+                        <div class="single-brand">
+                            <a href="#">
+                                <img src="assets/images/brands/Jeans.png" class="img-fluid" alt="">
+                            </a>
+                        </div>
+
+                        <!--=======  End of single brand logo  =======-->
+                    </div>
+                    <div class="col-lg-2 col-md-4 mb-md-30 mb-sm-30">
+                        <!--=======  single brand logo  =======-->
+
+                        <div class="single-brand">
+                            <a href="#">
+                                <img src="assets/images/brands/Ethenic wear.png" class="img-fluid" alt="">
+                            </a>
+                        </div>
+
+                        <!--=======  End of single brand logo  =======-->
+                    </div>
+                    <div class="col-lg-2 col-md-4 mb-md-30 mb-sm-30">
+                        <!--=======  single brand logo  =======-->
+
+                        <div class="single-brand">
+                            <a href="#">
+                                <img src="assets/images/brands/Ethenic wear_1.png" class="img-fluid" alt="">
+                            </a>
+                        </div>
+
+                        <!--=======  End of single brand logo  =======-->
+                    </div>
+                    <div class="col-lg-2 col-md-4 mb-md-30 mb-sm-30">
+                        <!--=======  single brand logo  =======-->
+
+                        <div class="single-brand">
+                            <a href="#">
+                                <img src="assets/images/brands/Kurta.png" class="img-fluid" alt="">
+                            </a>
+                        </div>
+
+                        <!--=======  End of single brand logo  =======-->
+                    </div>
+                    <div class="col-lg-2 col-md-4 mb-md-30 mb-sm-30">
+                        <!--=======  single brand logo  =======-->
+
+                        <div class="single-brand">
+                            <a href="#">
+                                <img src="assets/images/brands/Top's.png" class="img-fluid" alt="">
+                            </a>
+                        </div>
+
+                        <!--=======  End of single brand logo  =======-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title section-title--one text-center mt-90">
+            <h1>Deal of the day</h1>
+            <p class="subtitle subtitle--deep subtitle--trending-home">Mindfully crafted, our pieces sit on the
+                crosswalk of style and comfort</p>
+        </div>
+
+        <div class="row ml-90" style=" margin-top:4%;margin-bottom: 2%;">
+
+            <div class="single-banner--hoverborder  col-lg-3 col-md-6 col-sm-10" *ngFor="let d of dealOfTheDay | slice:0:1; let i=index">
+                <img src="http://localhost:8090{{d.bannersimage}}" class="img-fluid" style="height: 100%; width:100%">
+
+            </div>
+
+            <div class="single-banner--hoverborder col-md-5 col-md-6 col-sm-10 ">
+                <img src="../../assets/images/Lamaya/big-sale.jpg" class="img-fluid"
+                    style="height: 100%; width:100%"><br>
+                <button class="lezada-button lezada-button--dark lezada-button--medium"
+                    style="position: absolute;  left:35%; bottom: 10%; ">shop now</button>
+            </div>
+
+            <div class="single-banner--hoverborder  col-lg-3 col-md-6 col-sm-10" *ngFor="let d of dealOfTheDay | slice:1:2; let i=index">
+                <img src="http://localhost:8090{{d.bannersimage}}" class="img-fluid" style="height: 100%; width:100%">
+
+
+            </div>
+
+        </div>
+
+        <!--end of section 2-->
+
+        <!--section 3-->
+        <div class="tab-product-list-area ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!--=======  tab product navigation  =======-->
+                        <div class="section-title section-title--one text-center mb-30 ml-30">
+                            <h1>Our Categories</h1>
+                        </div>
+                        <!--=======  End of tab product navigation  =======-->
+                        <!--=======  tab product content  =======-->
+                        <div class="tab-content" id="nav-tabContent2">
+                            <div class="tab-pane fade show active" id="product-series-1" role="tabpanel"
+                                aria-labelledby="product-tab-1">
+                                <div class="row">
+                                    <!--=======  single product  =======-->
+                                    <div class="col-lg-1"></div>
+                                    <div class="col-10 col-lg-2 col-md-6 col-sm-6 mb-45 ">
+                                        <div class="single-product" (click)="openImageMenu('Kurtis')">
+                                            <!--=======  single product image  =======-->
+
+                                            <div class="single-product__image">
+                                                <a class="image-wrap">
+                                                    <img src="../../assets/images/Lamaya/imag1.jpeg" class="img-fluid"
+                                                        alt="">
+                                                    <img src="../../assets/images/Lamaya/imag2.jpeg" class="img-fluid"
+                                                        alt="">
+                                                </a>
+                                            </div>
+
+                                            <!--=======  End of single product image  =======-->
+
+                                            <!--=======  single product content  =======-->
+
+                                            <div class="single-product__content">
+
+                                                <div class="title">
+                                                    <h2 class="text-center"> <a>Kurtis</a></h2>
+
+                                                </div>
+                                                <div class="price">
+
+                                                </div>
+                                            </div>
+
+                                            <!--=======  End of single product content  =======-->
+                                        </div>
+                                    </div>
+                                    <!--=======  End of single product  =======-->
+
+                                    <!--=======  single product  =======-->
+                                    <div class="col-10 col-lg-2 col-md-6 col-sm-6 mb-45 ">
+                                        <div class="single-product" (click)="openImageMenu('Tops')">
+                                            <!--=======  single product image  =======-->
+
+                                            <div class="single-product__image">
+                                                <a class="image-wrap">
+                                                    <img src="../../assets/images/Lamaya/top7.jpg" class="img-fluid"
+                                                        alt="">
+                                                    <img src="../../assets/images/Lamaya/top2.jpg" class="img-fluid"
+                                                        alt="">
+                                                </a>
+                                            </div>
+
+                                            <!--=======  End of single product image  =======-->
+
+                                            <!--=======  single product content  =======-->
+
+                                            <div class="single-product__content">
+
+                                                <div class="title">
+                                                    <h2 class="text-center"> <a>Tops</a>
+                                                    </h2>
+
+                                                </div>
+                                                <div class="price">
+
+                                                </div>
+                                            </div>
+
+                                            <!--=======  End of single product content  =======-->
+                                        </div>
+                                    </div>
+                                    <!--=======  End of single product  =======-->
+
+                                    <!--=======  single product  =======-->
+                                    <div class="col-10 col-lg-2 col-md-6 col-sm-6 mb-45 ">
+                                        <div class="single-product" (click)="openImageMenu('Lehenga')">
+                                            <!--=======  single product image  =======-->
+
+                                            <div class="single-product__image">
+                                                <a class="image-wrap">
+                                                    <img src="../../assets/images/Lamaya/lehng1.jpg" class="img-fluid"
+                                                        alt="">
+                                                    <img src="../../assets/images/Lamaya/lehng4.jpg" class="img-fluid"
+                                                        alt="">
+                                                </a>
+                                            </div>
+
+                                            <!--=======  End of single product image  =======-->
+
+                                            <!--=======  single product content  =======-->
+
+                                            <div class="single-product__content">
+
+                                                <div class="title">
+                                                    <h2 class="text-center"> <a>Lehenga</a></h2>
+                                                </div>
+                                                <div class="price">
+
+                                                </div>
+                                            </div>
+
+                                            <!--=======  End of single product content  =======-->
+                                        </div>
+                                    </div>
+                                    <!--=======  End of single product  =======-->
+
+                                    <!--=======  single product  =======-->
+                                    <div class="col-10 col-lg-2 col-md-6 col-sm-6 mb-45 ">
+                                        <div class="single-product" (click)="openImageMenu('Dresses')">
+                                            <!--=======  single product image  =======-->
+
+                                            <div class="single-product__image">
+                                                <a class="image-wrap">
+                                                    <img src="../../assets/images/Lamaya/imag16.jpeg" class="img-fluid"
+                                                        alt="">
+                                                    <img src="../../assets/images/Lamaya/imag17.jpeg" class="img-fluid"
+                                                        alt="">
+                                                </a>
+                                            </div>
+
+                                            <!--=======  End of single product image  =======-->
+
+                                            <!--=======  single product content  =======-->
+
+                                            <div class="single-product__content">
+
+                                                <div class="title">
+                                                    <h2 class="text-center"> <a>Dresses</a></h2>
+
+                                                </div>
+                                                <div class="price">
+
+                                                </div>
+                                            </div>
+
+                                            <!--=======  End of single product content  =======-->
+                                        </div>
+                                    </div>
+                                    <!--=======  End of single product  =======-->
+
+                                    <!--=======  single product  =======-->
+                                    <div class="col-10 col-lg-2 col-md-6 col-sm-6 ">
+                                        <div class="single-product" (click)="openImageMenu('Punjabi')">
+                                            <!--=======  single product image  =======-->
+
+                                            <div class="single-product__image">
+                                                <a class="image-wrap">
+                                                    <img src="../../assets/images/Lamaya/pnjbi1.jpg" class="img-fluid"
+                                                        alt="">
+                                                    <img src="../../assets/images/Lamaya/pnjabi2.jpg" class="img-fluid"
+                                                        alt="">
+                                                </a>
+                                            </div>
+
+                                            <!--=======  End of single product image  =======-->
+
+                                            <!--=======  single product content  =======-->
+
+                                            <div class="single-product__content">
+
+                                                <div class="title">
+                                                    <h2 class="text-center"> <a>Punjabi
+                                                            Suits</a></h2>
+
+                                                </div>
+                                                <div class="price">
+
+                                                </div>
+                                            </div>
+
+                                            <!--=======  End of single product content  =======-->
+                                        </div>
+                                    </div>
+                                    <!--=======  End of single product  =======-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--=======  End of tab product content  =======-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section mb-10" id="carousel " style="padding-top: 0px !important;">
+            <div class="">
+                <div class="tim-title">
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!--=======  section title  =======-->
+
+                        <div class="section-title section-title--one text-center">
+                            <h1>Best Product</h1>
+                            <p class="subtitle subtitle--deep subtitle--trending-home">Here glimpse of our best
+                                products.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 mr-auto ml-auto">
+                        <div class=" page-carousel">
+                            <!-- <div style="width: 840px; text-align:center;margin:0; padding:0;"> -->
+                            <div class="row">
+                                <div class="col align-self-center">
+                                    <ng-image-slider #nav [images]="imageObject" [infinite]="true" [autoSlide]="4"
+                                        [imageSize]="{width: '32.5%', height: 500}" slideImage="1"></ng-image-slider>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- section 6--->
+        <div class="section-title section-title--one text-center mt-90 mb-40">
+            <h1>New Arrivals</h1>
+            <p class="subtitle subtitle--deep subtitle--trending-home">Mindfully crafted, our pieces sit on the
+                crosswalk of style and comfort</p>
+        </div>
+
+        <div class="wearable-home-content ">
+
+            <div class="row no-gutters product-isotope mb-40" style="margin-left: 10% !important;">
+                <div class="col-lg-2 sale mr-20"  *ngFor="let n of newArrival">
+
+                    <div class="single-product single-product--wearablehome" (click)="openNewArrivals(n.id)" >
+                        <div class="single-product__image">
+                            <a class="image-wrap">
+                                <img src="http://localhost:8090{{n.productMainImage}}" class="img-fluid" alt="">
+                            </a>
+                            <div class="single-product__floating-badges" *ngIf="n.isOnSale">
+                                <span class="onsale">-10%</span>
+                            </div>
+                            <div class="single-product__floating-badges" *ngIf="n.isHot">
+                                <span class="hot">hot</span>
+                            </div>
+
+                            <div class="single-product__floating-cart">
+                            </div>
+                            <!-- <div class="single-product__floating-icons">
+                                <span class="wishlist"><a data-tippy="Add to wishlist" data-tippy-inertia="true"
+                                        data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
+                                        data-tippy-theme="sharpborder" data-tippy-placement="left"><i
+                                            class="ion-android-favorite-outline"></i></a></span>
+                                <span class="compare"><a data-tippy="Compare" data-tippy-inertia="true"
+                                        data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
+                                        data-tippy-theme="sharpborder" data-tippy-placement="left"><i
+                                            class="ion-ios-shuffle-strong"></i></a></span>
+                                <span class="quickview"><a class="cd-trigger" href="#qv-1" data-tippy="Quick View"
+                                        data-tippy-inertia="true" data-tippy-animation="shift-away"
+                                        data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder"
+                                        data-tippy-placement="left"><i class="ion-ios-search-strong"></i></a></span>
+                            </div> -->
+                        </div>
+                        <div class="single-product__content">
+                            <div class="title">
+                                <h3> <a style="color:#ffffff">{{n.productName}}</a></h3>
+                            </div>
+                            <div class="price">
+                                <span class="main-price" style="color:#ffffff">₹ {{n.productPrice}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- scroll to top  -->
+        <a href="#" class="scroll-top"></a>
+        <!-- end of scroll to top -->
+
+
+    </div>
+    <app-footer></app-footer>
+</body>
