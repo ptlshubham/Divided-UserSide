@@ -31,7 +31,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { GalleryModule } from 'ng-gallery';
 import { ImageViewerModule } from '@hallysonh/ngx-imageviewer';
 import { LightboxModule } from 'ng-gallery/lightbox';
-// import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -87,7 +87,7 @@ export function tokenGetter() {
   ],
   bootstrap: [AppComponent],
   exports: [
-    // MatSnackBarModule,
+    
   ]
 
 })

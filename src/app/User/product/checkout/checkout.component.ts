@@ -23,8 +23,9 @@ export class CheckoutComponent implements OnInit {
   isAddress: boolean = false;
   isproductList: boolean = false;
   ispayment: boolean = false;
-  isProductsum:boolean=false;
-  isShowLogout:boolean=false;
+  isProductsum: boolean = false;
+  isShowLogout: boolean = false;
+  isSignup: boolean = false;
   public localUserName = localStorage.getItem('Username')
   public userAddressModel: Address = new Address;
   public userAddress: Address[] = [];
@@ -38,7 +39,9 @@ export class CheckoutComponent implements OnInit {
   GrandTotal: number = 0;
   public userOrdersModel: Userorders = new Userorders;
   public userOrders: Userorders[] = [];
-  addressid:any;
+  public RegisterModel: RegisterUserModel = new RegisterUserModel;
+  public adminRegister: RegisterUserModel[] = [];
+  addressid: any;
   constructor(
     private registerService: RegisterUserService,
     private apiservice: ApiService,
@@ -46,12 +49,13 @@ export class CheckoutComponent implements OnInit {
     private loginService: RegisterUserService,
     private router: Router,
     private navbaruserService: NavbaruserService,
-    private checkoutService :CheckoutService,
-    private detailsService: DetailsService
-   
+    private checkoutService: CheckoutService,
+    private detailsService: DetailsService,
+    // private RegisterCheckoutModel: RegisterUserModel
+
   ) {
     this.getStateList();
-   
+
     this.getCart();
     debugger
     if (localStorage.getItem('UserId') != null || localStorage.getItem('UserId') != undefined) {
@@ -150,9 +154,9 @@ export class CheckoutComponent implements OnInit {
   selectedaddress(data) {
     this.selectedAdd = data.address + ',' + data.landmark + ',' + data.city + ',' + data.state + ',' + data.pincode;
     this.isAddress = true;
-    this.userOrdersModel.addressid=data.id;
+    this.userOrdersModel.addressid = data.id;
     this.isProductsum = true;
-    
+
 
   }
   changeDilveryAddress() {
@@ -163,15 +167,15 @@ export class CheckoutComponent implements OnInit {
     if (localStorage.getItem('UserId') != null || localStorage.getItem('userId') != undefined) {
       this.navbaruserService.getCartList().subscribe((data: any) => {
         this.getCartList = data;
-        
+
         this.getCartList.forEach(element => {
-          this.detailsService.getProductSizelist(element.ProductId).subscribe(data=>{
-            element.sizelist=data;
+          this.detailsService.getProductSizelist(element.ProductId).subscribe(data => {
+            element.sizelist = data;
             debugger
             element.sizelist.forEach(element => {
-              element.sizeclass='single-size';
+              element.sizeclass = 'single-size';
             });
-           
+
           });
           element.quantity = 1;
           element.total = element.productPrice * element.quantity;
@@ -183,7 +187,7 @@ export class CheckoutComponent implements OnInit {
       if (localStorage.getItem('cart') != undefined) {
         var test = localStorage.getItem('cart');
         var test2 = JSON.parse(test);
-        
+
         var i = 0;
         if (this.getCartList.length == 0) {
           this.getCartList.push(test2);
@@ -199,13 +203,13 @@ export class CheckoutComponent implements OnInit {
           this.getCartList.push(test2);
         }
         this.getCartList.forEach(element => {
-          this.detailsService.getProductSizelist(element.id).subscribe(data=>{
-            element.sizelist=data;
+          this.detailsService.getProductSizelist(element.id).subscribe(data => {
+            element.sizelist = data;
             debugger
             element.sizelist.forEach(element => {
-              element.sizeclass='single-size';
+              element.sizeclass = 'single-size';
             });
-           
+
           });
           element.quantity = 1;
           element.total = element.productPrice * element.quantity;
@@ -216,13 +220,13 @@ export class CheckoutComponent implements OnInit {
     }
 
   }
-  selectSize(ind,j,val){
+  selectSize(ind, j, val) {
     debugger
-     this.getCartList[ind].size =val;
-     this.userOrdersModel.size = val;
-     this.getCartList[ind].sizelist[j].sizeclass='single-size active';
- 
-   }
+    this.getCartList[ind].size = val;
+    this.userOrdersModel.size = val;
+    this.getCartList[ind].sizelist[j].sizeclass = 'single-size active';
+
+  }
   showingListProduct() {
     if (this.isproductList == false) {
       this.isproductList = true;
@@ -230,17 +234,17 @@ export class CheckoutComponent implements OnInit {
     }
     else {
       this.isproductList = false;
-      
+
     }
 
-    
+
     this.userOrdersModel.userid = localStorage.getItem('UserId');
     this.userOrdersModel.username = localStorage.getItem('Username');
     this.userOrdersModel.productid = this.getCartList;
     this.userOrdersModel.total = this.GrandTotal;
-    this.userOrdersModel.status='Pending';
+    this.userOrdersModel.status = 'Pending';
     debugger
-    this.checkoutService.saveOrders(this.userOrdersModel).subscribe((data:any)=>{
+    this.checkoutService.saveOrders(this.userOrdersModel).subscribe((data: any) => {
       alert("order succesfully");
     })
 
@@ -268,23 +272,34 @@ export class CheckoutComponent implements OnInit {
 
   }
   changeLoginUser() {
-    this.isShowLogout=true;
-    this.isAddress=true;
+    this.isShowLogout = true;
+    this.isAddress = true;
   }
   changeOrderUser() {
     this.isproductList = false;
   }
 
-  logoutUser(){
+  logoutUser() {
     localStorage.clear();
     this.router.navigate(['/home']);
   }
-  ContinueCheckout(){
-    this.isAddress=false;
-    this.isShowLogout=false;
-    this.isAddress=false;
+  ContinueCheckout() {
+    this.isAddress = false;
+    this.isShowLogout = false;
+    this.isAddress = false;
   }
-  SendEmailToUser(){
-    
+  SendEmailToUser() {
+
+  }
+  signupOpen() {
+    debugger
+    this.isSignup = true;
+    this.isLogin = true;
+  }
+  submitUserRegister() {
+    // this.RegisterCheckoutModel.isactive = true;
+    // this.registerService.saveUser(this.RegisterCheckoutModel).subscribe((response) => {
+
+    // })
   }
 }

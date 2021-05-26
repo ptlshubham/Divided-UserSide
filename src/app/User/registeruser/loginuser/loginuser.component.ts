@@ -99,7 +99,6 @@ export class LoginuserComponent implements OnInit {
             
           }
           else{
-            this.apiservice.showNotification('top','right','User Successfully logged in.','success');
             localStorage.setItem('authenticationToken', data[0].token);
             localStorage.setItem('UserId',data[0].id);
             localStorage.setItem('Email',data[0].email);

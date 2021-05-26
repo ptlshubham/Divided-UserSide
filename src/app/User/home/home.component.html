@@ -43,7 +43,7 @@
 
                         <div class="single-brand">
                             <a href="#">
-                                <img src="assets/images/brands/Bridelwear.png" class="img-fluid" alt="">
+                                <img src="assets/images/brands/1.png" class="img-fluid" alt="">
                             </a>
                         </div>
 
@@ -54,7 +54,7 @@
 
                         <div class="single-brand">
                             <a href="#">
-                                <img src="assets/images/brands/Jeans.png" class="img-fluid" alt="">
+                                <img src="assets/images/brands/2.png" class="img-fluid" alt="">
                             </a>
                         </div>
 
@@ -65,7 +65,7 @@
 
                         <div class="single-brand">
                             <a href="#">
-                                <img src="assets/images/brands/Ethenic wear.png" class="img-fluid" alt="">
+                                <img src="assets/images/brands/3.png" class="img-fluid" alt="">
                             </a>
                         </div>
 
@@ -76,7 +76,7 @@
 
                         <div class="single-brand">
                             <a href="#">
-                                <img src="assets/images/brands/Ethenic wear_1.png" class="img-fluid" alt="">
+                                <img src="assets/images/brands/4.png" class="img-fluid" alt="">
                             </a>
                         </div>
 
@@ -87,7 +87,7 @@
 
                         <div class="single-brand">
                             <a href="#">
-                                <img src="assets/images/brands/Kurta.png" class="img-fluid" alt="">
+                                <img src="assets/images/brands/5.png" class="img-fluid" alt="">
                             </a>
                         </div>
 
@@ -98,7 +98,7 @@
 
                         <div class="single-brand">
                             <a href="#">
-                                <img src="assets/images/brands/Top's.png" class="img-fluid" alt="">
+                                <img src="assets/images/brands/6.png" class="img-fluid" alt="">
                             </a>
                         </div>
 
@@ -114,22 +114,20 @@
                 crosswalk of style and comfort</p>
         </div>
 
-        <div class="row ml-90" style=" margin-top:4%;margin-bottom: 2%;">
+        <div class="row ml-10 mr-10" style=" margin-top:4%;margin-bottom: 2%;">
 
             <div class="single-banner--hoverborder  col-lg-3 col-md-6 col-sm-10" *ngFor="let d of dealOfTheDay | slice:0:1; let i=index">
-                <img src="http://localhost:8090{{d.bannersimage}}" class="img-fluid" style="height: 100%; width:100%">
+                <img src="http://localhost:8090{{d.bannersimage}}" class="img-fluid" style="height: 100%">
 
             </div>
 
             <div class="single-banner--hoverborder col-md-5 col-md-6 col-sm-10 ">
                 <img src="../../assets/images/Lamaya/big-sale.jpg" class="img-fluid"
-                    style="height: 100%; width:100%"><br>
-                <button class="lezada-button lezada-button--dark lezada-button--medium"
-                    style="position: absolute;  left:35%; bottom: 10%; ">shop now</button>
-            </div>
+                    style="height: 100%"><br>
+                </div>
 
             <div class="single-banner--hoverborder  col-lg-3 col-md-6 col-sm-10" *ngFor="let d of dealOfTheDay | slice:1:2; let i=index">
-                <img src="http://localhost:8090{{d.bannersimage}}" class="img-fluid" style="height: 100%; width:100%">
+                <img src="http://localhost:8090{{d.bannersimage}}" class="img-fluid" style="height: 100%">
 
 
             </div>
@@ -379,7 +377,7 @@
                     <div class="single-product single-product--wearablehome" (click)="openNewArrivals(n.id)" >
                         <div class="single-product__image">
                             <a class="image-wrap">
-                                <img src="http://localhost:8090{{n.productMainImage}}" class="img-fluid" alt="">
+                            <img src="http://localhost:8090{{n.productMainImage}}" class="img-fluid" alt="">
                             </a>
                             <div class="single-product__floating-badges" *ngIf="n.isOnSale">
                                 <span class="onsale">-10%</span>
