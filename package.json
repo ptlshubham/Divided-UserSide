@@ -37,6 +37,7 @@
     "@types/googlemaps": "3.39.14",
     "ajv": "6.12.5",
     "angular-image-slider": "0.0.9",
+    "angular-notifier": "^9.0.1",
     "angular-responsive-carousel": "^2.0.2",
     "bootstrap": "4.5.2",
     "bootstrap-notify": "3.1.3",

@@ -31,12 +31,51 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { GalleryModule } from 'ng-gallery';
 import { ImageViewerModule } from '@hallysonh/ngx-imageviewer';
 import { LightboxModule } from 'ng-gallery/lightbox';
-
+import { NotifierModule, NotifierOptions } from 'angular-notifier';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
-}
-
+};
+const customNotifierOptions: NotifierOptions = {
+  position: {
+		horizontal: {
+			position: 'left',
+			distance: 12
+		},
+		vertical: {
+			position: 'bottom',
+			distance: 12,
+			gap: 10
+		}
+	},
+  theme: 'material',
+  behaviour: {
+    autoHide: 5000,
+    onClick: 'hide',
+    onMouseover: 'pauseAutoHide',
+    showDismissButton: true,
+    stacking: 4
+  },
+  animations: {
+    enabled: true,
+    show: {
+      preset: 'slide',
+      speed: 300,
+      easing: 'ease'
+    },
+    hide: {
+      preset: 'fade',
+      speed: 300,
+      easing: 'ease',
+      offset: 50
+    },
+    shift: {
+      speed: 300,
+      easing: 'ease'
+    },
+    overlap: 150
+  }
+};
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -73,6 +112,8 @@ export function tokenGetter() {
     GalleryModule,
     LightboxModule,
     ImageViewerModule,
+   
+    NotifierModule.withConfig(customNotifierOptions)
   ],
   declarations: [
     AppComponent,
