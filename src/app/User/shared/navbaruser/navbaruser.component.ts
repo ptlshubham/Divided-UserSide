@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { NotifierService } from 'angular-notifier';
+
 // import { Category } from 'app/Admin/category/category.model';
 import { ApiService } from 'app/api.service';
 import { Productlist } from 'app/User/product/list/productlist.model';
@@ -31,8 +31,7 @@ export class NavbaruserComponent implements OnInit {
   constructor(
     private navbaruserService: NavbaruserService,
     private router: Router,
-    private apiservice:ApiService,
-    private notifier:NotifierService
+    private apiservice:ApiService
     // private _snackBar: MatSnackBar
   ) {
     if(localStorage.getItem('UserId') != undefined || localStorage.getItem('UserId') != null){
@@ -205,7 +204,7 @@ export class NavbaruserComponent implements OnInit {
     debugger
     localStorage.clear();
     this.isLogged = false;
-    this.notifier.notify('success', 'You are awesome! I mean it!');
+   
     // this._snackBar.open('Logout Successfully....',);
   }
   getPoductToSubNavbar(id) {

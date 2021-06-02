@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NotifierService } from 'angular-notifier';
+
 import { ApiService } from 'app/api.service';
 import { AuthService } from 'app/User/services/auth.service';
 import { RegisterUserModel } from '../registeruser.model';
@@ -38,8 +38,7 @@ export class LoginuserComponent implements OnInit {
         public auth:AuthService,
         private loginService: RegisterUserService,
         private apiservice:ApiService,
-        private router:Router,
-        private notifier:NotifierService
+        private router:Router
         
         ) {
         this.nativeElement = element.nativeElement;
@@ -101,7 +100,7 @@ export class LoginuserComponent implements OnInit {
             
           }
           else{
-            this.notifier.notify("success", "You are awesome! I mean it!");
+           
             localStorage.setItem('authenticationToken', data[0].token);
             localStorage.setItem('UserId',data[0].id);
             localStorage.setItem('Email',data[0].email);
