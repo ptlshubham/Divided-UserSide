@@ -1,0 +1,76 @@
+.fa-facebook-square {
+       color: blue ;
+    background-color: #fff ;
+    font-size: 25px !important;
+  }
+  .fa-google {
+       background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    font-size: 25px !important;
+  }
+  .lezada-button--small {
+    font-size: 12px;
+    padding: 8px 8px;
+    background-color: white;
+}
+.or-separator {
+    text-align: center;
+    color: #a9a9a9;
+    font: 700 10pt SourceSansPro;
+}
+.or-separator .or-text-desktop {
+    margin-top: 4px;
+    margin-bottom: 12px;
+}
+.or-separator .or-text, .or-separator .or-text-desktop {
+    margin-top: 11px;
+    padding: 0 8px;
+    display: inline-block;
+    vertical-align: top;
+}
+.or-separator hr {
+    width: 20%;
+    display: inline-block;
+    size: 2px;
+}
+hr {
+    margin: auto;
+    width: 40%;
+}
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
+}
+  .login-fb {
+      margin-left:32%;
+      margin-right:29%;
+      text-align: justify !important;
+      border: black solid 1px;
+      box-sizing: border-box;
+    font-size: 18px !important;
+    border-radius: 5px;
+    color: black;
+    
+    /* color:blue !important;
+    font-weight: 500;
+    text-transform: uppercase; */
+
+}
+.login-google {
+    margin-left:32%;
+    border-radius: 5px;
+    margin-right:29%;
+    text-align: justify !important;
+    border: black solid 1px;
+    box-sizing: border-box;
+  font-size: 18px !important;
+  color: black;
+  /* color:red !important;
+    font-weight: 500;
+    text-transform: uppercase; */
+}
