@@ -26,13 +26,13 @@
                                         <li *ngFor="let c of categoryList; let i=index"><a class="mega-column-title"
                                                (click)="getPoductToNavbar(c.id)">{{c.name}}</a>
                                             <ul class="mega-sub-menu" *ngFor="let sc of c.SubCategory;let j= index">
-                                                <li style="font-weight: 600 !important;"><a (click)="openSubToSub(c.id ,sc.id,i,j)"
+                                                <li ><a (click)="openSubToSub(c.id ,sc.id,i,j)"
                                                        >{{sc.name}}
                                                         <i class="fa fa-caret-right"
                                                         aria-hidden="true"></i>
                                                     </a>
-                                                    <ul class="img-fluid" style="border: 1px solid !important;" *ngIf="openSub && sc.isopen ">
-                                                        <li style="color: black !important; font-weight: 500!important;"
+                                                    <ul class="img-fluid" *ngIf="openSub && sc.isopen ">
+                                                        <li 
                                                             *ngFor="let ss of sc.subtosub">
                                                             <a (click)="getPoductToSubNavbar(ss.id)">{{ss.name}}</a>
                                                         </li>
