@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   public newArrival: Productlist[] = [];
   topban:any=[];
   dealOfTheDay:any=[];
+  dealOfTheDayCenter:any=[];
   productList:any;
   public imageUrls1;
   imageObject:any=[];
@@ -36,18 +37,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.imageUrls1 = [
-      'assets/images/slider/s1.JPG',
-      'assets/images/slider/s2.JPG',
-      'assets/images/slider/s3.JPG',
-      'assets/images/slider/s4.JPG',
-      'assets/images/slider/s5.JPG',
-      'assets/images/slider/s6.JPG',
-      'assets/images/slider/s7.JPG',
-      'assets/images/slider/s8.JPG',
-
-    ];
   }
   
   closepopup() {
@@ -72,8 +61,10 @@ export class HomeComponent implements OnInit {
         if(element.name =='Deal of the Day'){
           this.dealOfTheDay.push(element);
         }
+        else if(element.name == 'Deal of the Day Center'){
+          this.dealOfTheDayCenter.push(element);
+        }
       })
-  
     });
   }
   getBestProductSlider(){

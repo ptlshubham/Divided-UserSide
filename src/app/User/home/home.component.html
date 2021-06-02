@@ -17,7 +17,7 @@
                                     <div class="carousel-caption">
                                     </div>
                                 </ng-template>
-                              </ngb-carousel>
+                            </ngb-carousel>
                         </div>
                     </div>
                 </div>
@@ -116,19 +116,25 @@
 
         <div class="row ml-10 mr-10" style=" margin-top:4%;margin-bottom: 2%;">
 
-            <div class="single-banner--hoverborder  col-lg-3 col-md-6 col-sm-10" *ngFor="let d of dealOfTheDay | slice:0:1; let i=index">
+            <div class="single-banner--hoverborder  col-lg-3 col-md-6 col-sm-10"
+                *ngFor="let d of dealOfTheDay | slice:0:1; let i=index">
                 <img src="http://localhost:8090{{d.bannersimage}}" class="img-fluid" style="height: 100%">
-
+                <div class="single-product__floating-badges">
+                    <span class="onsale">-10%</span>
+                </div>
             </div>
 
-            <div class="single-banner--hoverborder col-md-5 col-md-6 col-sm-10 ">
-                <img src="../../assets/images/Lamaya/big-sale.jpg" class="img-fluid"
-                    style="height: 100%"><br>
-                </div>
+            <div class="single-banner--hoverborder col-md-5 col-md-6 col-sm-10 "
+                *ngFor="let c of dealOfTheDayCenter | slice:0:1; let i=index">
+                <img src="http://localhost:8090{{c.bannersimage}}" class="img-fluid" style="height: 100%"><br>
+            </div>
 
-            <div class="single-banner--hoverborder  col-lg-3 col-md-6 col-sm-10" *ngFor="let d of dealOfTheDay | slice:1:2; let i=index">
+            <div class="single-banner--hoverborder  col-lg-3 col-md-6 col-sm-10"
+                *ngFor="let d of dealOfTheDay | slice:1:2; let i=index">
                 <img src="http://localhost:8090{{d.bannersimage}}" class="img-fluid" style="height: 100%">
-
+                <div class="single-product__floating-badges">
+                    <span class="onsale">-10%</span>
+                </div>
 
             </div>
 
@@ -372,12 +378,12 @@
         <div class="wearable-home-content ">
 
             <div class="row no-gutters product-isotope mb-40" style="margin-left: 10% !important;">
-                <div class="col-lg-2 sale mr-20"  *ngFor="let n of newArrival">
+                <div class="col-lg-2 sale mr-20" *ngFor="let n of newArrival">
 
-                    <div class="single-product single-product--wearablehome" (click)="openNewArrivals(n.id)" >
+                    <div class="single-product single-product--wearablehome" (click)="openNewArrivals(n.id)">
                         <div class="single-product__image">
                             <a class="image-wrap">
-                            <img src="http://localhost:8090{{n.productMainImage}}" class="img-fluid" alt="">
+                                <img src="http://localhost:8090{{n.productMainImage}}" class="img-fluid" alt="">
                             </a>
                             <div class="single-product__floating-badges" *ngIf="n.isOnSale">
                                 <span class="onsale">-10%</span>
@@ -413,7 +419,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
 
