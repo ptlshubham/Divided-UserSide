@@ -12,13 +12,13 @@ import { DetailsComponent } from './details/details.component';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { WishComponent } from './wish/wish.component';
 import { CompareComponent } from './compare/compare.component';
-import { CheckoutComponent } from './checkout/checkout.component';
 import { NgxStarRatingModule } from 'ngx-star-rating';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ImageViewerModule } from '@hallysonh/ngx-imageviewer';
 import { GalleryModule } from 'ng-gallery';
 import { LightboxModule } from 'ng-gallery/lightbox';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 
