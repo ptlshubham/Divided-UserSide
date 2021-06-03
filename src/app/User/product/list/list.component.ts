@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'app/api.service';
+import { Toaster } from 'ngx-toast-notifications';
 import { ProductlistService } from './list.service';
 import { Productlist } from './productlist.model';
 import { Wishlist } from './wishlist.model';
@@ -42,6 +43,7 @@ export class ListComponent implements OnInit {
     private router: Router,
     private apiservice: ApiService,
     private activatedRoute: ActivatedRoute,
+    private toaster: Toaster
   ) {
 
     this.activatedRoute.queryParams.subscribe((res: any) => {
@@ -219,6 +221,7 @@ export class ListComponent implements OnInit {
       localStorage.setItem('cart', JSON.stringify(obj));
       this.productListService.saveAddTocart(this.ProductListModel).subscribe((response) => {
         console.log(response);
+        this.toaster.open({text:'Product added in cart Successfully.',caption:'Product',type:'dark',duration:4000,position:'bottom-center'});
       })
     }
     else {
@@ -234,6 +237,7 @@ export class ListComponent implements OnInit {
       this.WishListModel.productid = id;
       this.productListService.saveAddToWish(this.WishListModel).subscribe((response) => {
         console.log(response);
+        this.toaster.open({text:'Product added in wishlist Successfully.',caption:'Product',type:'dark',duration:4000,position:'bottom-center'});
       })
     }
     else {

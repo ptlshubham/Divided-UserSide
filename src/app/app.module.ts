@@ -25,6 +25,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { GalleryModule } from 'ng-gallery';
 import { ImageViewerModule } from '@hallysonh/ngx-imageviewer';
 import { LightboxModule } from 'ng-gallery/lightbox';
+import { ToastNotificationsModule } from "ngx-toast-notifications";
 
 
 export function tokenGetter() {
@@ -55,7 +56,8 @@ export function tokenGetter() {
     NgMultiSelectDropDownModule.forRoot(),
     GalleryModule,
     LightboxModule,
-    ImageViewerModule
+    ImageViewerModule,
+    ToastNotificationsModule
    
    
   ],

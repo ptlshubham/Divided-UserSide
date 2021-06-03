@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'app/api.service';
 import { NavbaruserService } from 'app/User/shared/navbaruser/navbaruser.service';
+import { Toaster } from 'ngx-toast-notifications';
 import { ProductlistService } from '../list/list.service';
 import { Productlist } from '../list/productlist.model';
 import { Wishlist } from '../list/wishlist.model';
@@ -19,7 +20,8 @@ export class WishComponent implements OnInit {
     private navbaruserService: NavbaruserService,
     private productListService: ProductlistService,
     private router: Router,
-    private apiservice: ApiService
+    private apiservice: ApiService,
+    private toaster:Toaster
   ) {
     this.getWishList();
   }
@@ -34,6 +36,7 @@ export class WishComponent implements OnInit {
   removeWishItem(index, id) {
     this.navbaruserService.removeWish(id).subscribe((req) => {
       this.wishList.splice(index, 1);
+      this.toaster.open({text:'Product remove from WishList Successfully.',caption:'Product',type:'dark',duration:4000,position:'bottom-center'});
     })
   }
   addWishToCart(wish) {
@@ -43,13 +46,14 @@ export class WishComponent implements OnInit {
       productid: wish.productid
     }
     this.productListService.saveAddTocart(data).subscribe((response) => {
-      this.apiservice.showNotification('top','right','Product successfully added in Wishlist.','success');
+    
       this.removeWishToCart(wish.id);
     })
   }
   removeWishToCart(id) {
     debugger
     this.navbaruserService.removeWish(id).subscribe((req) => {
+      this.toaster.open({text:'Product remove from WishList Successfully.',caption:'Product',type:'dark',duration:4000,position:'bottom-center'});
       this.getWishList()
     })
   }

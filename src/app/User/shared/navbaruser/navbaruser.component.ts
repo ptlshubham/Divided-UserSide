@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'app/api.service';
 import { Productlist } from 'app/User/product/list/productlist.model';
 import { Wishlist } from 'app/User/product/list/wishlist.model';
+import { Toaster } from 'ngx-toast-notifications';
 import { NavbaruserService } from './navbaruser.service';
 
 @Component({
@@ -31,8 +32,8 @@ export class NavbaruserComponent implements OnInit {
   constructor(
     private navbaruserService: NavbaruserService,
     private router: Router,
-    private apiservice:ApiService
-    // private _snackBar: MatSnackBar
+    private apiservice:ApiService,
+    private toaster: Toaster
   ) {
     if(localStorage.getItem('UserId') != undefined || localStorage.getItem('UserId') != null){
       this.isLogged = true;
@@ -129,6 +130,7 @@ export class NavbaruserComponent implements OnInit {
    
     this.navbaruserService.removeWish(id).subscribe((req) => {
       this.wishList.splice(index, 1);
+      this.toaster.open({text:'Product remove from WishList Successfully.',caption:'Product',type:'dark',duration:4000,position:'bottom-center'});
     })
   }
   removeCartItem(index, id) {
@@ -136,6 +138,7 @@ export class NavbaruserComponent implements OnInit {
     this.navbaruserService.removeCart(id).subscribe((req) => {
       this.carttotal= this.carttotal - this.getCartList[index].productPrice;
       this.getCartList.splice(index, 1);
+      this.toaster.open({text:'Product remove from Cart Successfully.',caption:'Product',type:'dark',duration:4000,position:'bottom-center'});
     })
   }
 
@@ -204,8 +207,7 @@ export class NavbaruserComponent implements OnInit {
     debugger
     localStorage.clear();
     this.isLogged = false;
-   
-    // this._snackBar.open('Logout Successfully....',);
+    this.toaster.open({text:'User Logout Successfully.',caption:'Logout',type:'dark',duration:4000,position:'bottom-center'});
   }
   getPoductToSubNavbar(id) {
     this.router.navigate(['/product/productlist'], {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavbaruserService } from 'app/User/shared/navbaruser/navbaruser.service';
+import { Toaster } from 'ngx-toast-notifications';
 import { DetailsService } from '../details/details.service';
 import { ProductlistService } from '../list/list.service';
 import { Productlist } from '../list/productlist.model';
@@ -37,7 +38,8 @@ export class CartComponent implements OnInit {
     private productListService: ProductlistService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private detailsService: DetailsService
+    private detailsService: DetailsService,
+    private toaster: Toaster
   ) {
  
     this.quantity = 1;
@@ -110,6 +112,7 @@ export class CartComponent implements OnInit {
   removeCartItem(index, id) {
     this.navbaruserService.removeCart(id).subscribe((req) => {
       this.getCartList.splice(index, 1);
+      this.toaster.open({text:'Product remove from cart Successfully.',caption:'Product',type:'dark',duration:4000,position:'bottom-center'});
     })
   }
   decrementQty(indx){
