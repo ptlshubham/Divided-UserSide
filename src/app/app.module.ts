@@ -55,9 +55,7 @@ export function tokenGetter() {
     NgMultiSelectDropDownModule.forRoot(),
     GalleryModule,
     LightboxModule,
-    ImageViewerModule
-   
-   
+    ImageViewerModule,
   ],
   declarations: [
     AppComponent,
