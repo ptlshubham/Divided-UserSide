@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { RegisteruserRoutes } from './registeruser.routing';
 import { ManageuserComponent } from './manageuser/manageuser.component';
+import { ToastNotificationsModule } from 'ngx-toast-notifications';
 
 
 
@@ -20,6 +21,7 @@ import { ManageuserComponent } from './manageuser/manageuser.component';
     FooterUserModule,
     NgbModule,
     FormsModule,
+    ToastNotificationsModule,
     RouterModule.forChild(RegisteruserRoutes)
   ]
 

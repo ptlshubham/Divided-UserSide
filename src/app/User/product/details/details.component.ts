@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'app/api.service';
 import { Gallery, GalleryItem, ImageSize, ThumbnailsPosition } from 'ng-gallery';
 import { Lightbox } from 'ng-gallery/lightbox';
+import { Toaster } from 'ngx-toast-notifications';
 import { ProductlistService } from '../list/list.service';
 import { Productlist } from '../list/productlist.model';
 import { DetailsService } from './details.service';
@@ -59,7 +60,8 @@ export class DetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private apiservice: ApiService,
     public gallery: Gallery,
-    public lightbox: Lightbox
+    public lightbox: Lightbox,
+    private toaster: Toaster
   ) {
     this.activatedRoute.queryParams.subscribe((res: any) => {
       this.Ref_id = res.val;
@@ -206,6 +208,7 @@ export class DetailsComponent implements OnInit {
       localStorage.setItem('cart', JSON.stringify(obj));
       this.productListService.saveAddTocart(this.ProductListModel).subscribe((response) => {
         console.log(response);
+        this.toaster.open({text:'Product added in cart Successfully.',caption:'Product',type:'dark',duration:4000,position:'bottom-center'});
       })
     }
     else {

@@ -1,9 +1,9 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-
 import { ApiService } from 'app/api.service';
 import { AuthService } from 'app/User/services/auth.service';
+import { Toaster, ToastType } from 'ngx-toast-notifications';
 import { RegisterUserModel } from '../registeruser.model';
 import { RegisterUserService } from '../registeruser.service';
 
@@ -24,7 +24,7 @@ export class LoginuserComponent implements OnInit {
       { type: 'required', message: 'Email is required' },
       { type: 'pattern', message: 'Enter a valid email' }
     ],
-    }  // formBuilder: FormBuilder;
+    } 
     submitted=false;
     onSubmit(){this.submitted=true};
  
@@ -38,7 +38,8 @@ export class LoginuserComponent implements OnInit {
         public auth:AuthService,
         private loginService: RegisterUserService,
         private apiservice:ApiService,
-        private router:Router
+        private router:Router,
+        private toaster: Toaster
         
         ) {
         this.nativeElement = element.nativeElement;
@@ -63,7 +64,6 @@ export class LoginuserComponent implements OnInit {
         this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
 
         setTimeout(function(){
-            // after 1000 ms we add the class animated to the login/register card
             $('.card').removeClass('card-hidden');
         }, 700)
     }
@@ -87,6 +87,7 @@ export class LoginuserComponent implements OnInit {
             body.classList.remove('nav-open');
         }
     }
+    
     loginUser(credentials) {
         console.log("......data...." + credentials.email);
         this.loginService.login(credentials).subscribe(data=>{
@@ -100,7 +101,7 @@ export class LoginuserComponent implements OnInit {
             
           }
           else{
-           
+            this.toaster.open({text:'User Login Successfully.',caption:'Login',type:'dark',duration:4000,position:'bottom-center'});
             localStorage.setItem('authenticationToken', data[0].token);
             localStorage.setItem('UserId',data[0].id);
             localStorage.setItem('Email',data[0].email);
