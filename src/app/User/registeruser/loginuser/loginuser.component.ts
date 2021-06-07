@@ -6,6 +6,9 @@ import { AuthService } from 'app/User/services/auth.service';
 import { Toaster, ToastType } from 'ngx-toast-notifications';
 import { RegisterUserModel } from '../registeruser.model';
 import { RegisterUserService } from '../registeruser.service';
+import { SocialAuthService, SocialUser  } from "angularx-social-login";
+import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
+ 
 
 @Component({
   selector: 'app-loginuser',
@@ -33,13 +36,16 @@ export class LoginuserComponent implements OnInit {
     private sidebarVisible: boolean;
     private nativeElement: Node;
     error: string;
+    user: SocialUser;
+    GoogleLoginProvider = GoogleLoginProvider;
 
     constructor(private element : ElementRef,
         public auth:AuthService,
         private loginService: RegisterUserService,
         private apiservice:ApiService,
         private router:Router,
-        private toaster: Toaster
+        private toaster: Toaster,
+        private authService: SocialAuthService
         
         ) {
         this.nativeElement = element.nativeElement;
@@ -110,6 +116,15 @@ export class LoginuserComponent implements OnInit {
           }
         
         });
+      }
+
+
+      signInWithGoogle(): void {
+        this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+      }
+    
+      signInWithFB(): void {
+        this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
       }
 
 }

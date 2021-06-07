@@ -26,6 +26,9 @@ import { GalleryModule } from 'ng-gallery';
 import { ImageViewerModule } from '@hallysonh/ngx-imageviewer';
 import { LightboxModule } from 'ng-gallery/lightbox';
 import { ToastNotificationsModule } from "ngx-toast-notifications";
+import { SocialLoginModule, SocialAuthServiceConfig  } from "angularx-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
+
 
 
 export function tokenGetter() {
@@ -57,7 +60,8 @@ export function tokenGetter() {
     GalleryModule,
     LightboxModule,
     ImageViewerModule,
-    ToastNotificationsModule
+    ToastNotificationsModule,
+    SocialLoginModule
    
    
   ],
@@ -68,6 +72,24 @@ export function tokenGetter() {
     AuthService,
     AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: true,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '1091255103461-4g04nk0lfr26cg4fil6kic5m1ctcu7a7.apps.googleusercontent.com'
+            ),
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('561602290896109'),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    }
   ],
   bootstrap: [AppComponent],
   exports: [
