@@ -42,7 +42,7 @@ export class NavbaruserComponent implements OnInit {
       this.isLogged = false;
     }
      this.getCart();
-      //setInterval(() => this.getCart(), 3500);
+      // setInterval(() => this.getCart(), 3500);
       this.getWishList();
     // setInterval(() => this.getWishList(), 3500);
      this.getCategoryList();
@@ -65,11 +65,13 @@ export class NavbaruserComponent implements OnInit {
       });
     }
     else{
-      
+      debugger
       if(localStorage.getItem('cart') != undefined){
         var test = localStorage.getItem('cart');
         var test2 = JSON.parse(test);
         var i=0;
+        var j=0;
+        debugger
           if(this.getCartList.length == 0){
             this.getCartList.push(test2);
             this.carttotal = this.carttotal +  this.getCartList[0].productPrice;
@@ -79,10 +81,14 @@ export class NavbaruserComponent implements OnInit {
               if(element.id != test2.id){
                 i++;
               }
+              else{
+                j++;
+              }
             })
           }
-          if(i >0){
+          if(i >0 && j==0){
             this.getCartList.push(test2);
+           
             this.getCartList.forEach(element=>{
               this.carttotal = this.carttotal + element.productPrice;
             })
@@ -108,6 +114,7 @@ export class NavbaruserComponent implements OnInit {
         var test = localStorage.getItem('wish');
         var test2 = JSON.parse(test);
         var i=0;
+        var j=0;
           if(this.getCartList.length == 0){
             this.wishList.push(test2);
           }
@@ -116,10 +123,14 @@ export class NavbaruserComponent implements OnInit {
               if(element.id == test2.id){
                 i++;
               }
+              else{
+                j++;
+              }
             })
           }
-          if(i >0){
+          if(i >0 && j==0){
             this.wishList.push(test2);
+           
           }
       }
      
@@ -134,6 +145,7 @@ export class NavbaruserComponent implements OnInit {
     })
   }
   removeCartItem(index, id) {
+    localStorage.removeItem('cart');
     this.carttotal =this.carttotal- this.getCartList[index].productPrice;
     this.navbaruserService.removeCart(id).subscribe((req) => {
       this.carttotal= this.carttotal - this.getCartList[index].productPrice;

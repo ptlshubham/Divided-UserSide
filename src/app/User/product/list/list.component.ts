@@ -211,7 +211,7 @@ export class ListComponent implements OnInit {
     this.getNavbarRoutedProducts();
   }
   addToCart(id, obj) {
-
+    debugger
     // this.productListService. = true;
     if (this.UserId != undefined) {
       this.ProductListModel.userid = this.UserId;

@@ -58,14 +58,15 @@
                                     <div class="shop-product__block shop-product__block--size mb-20">
                                         <div class="shop-product__block__title">Size:</div>
                                         <div class="shop-product__block__value">
-                                            <div class="shop-product-size-list">
-                                                <span [ngClass]="sizeclassxxl" *ngIf="isxxl" (click)="selectSize('xxl')">XXL</span>
-                                                <span [ngClass]="sizeclassxl"  *ngIf="isxl" (click)="selectSize('xl')">XL</span>
-                                                <span [ngClass]="sizeclassl" *ngIf="isl" (click)="selectSize('l')">L</span>
-                                                <span [ngClass]="sizeclassm" *ngIf="ism" (click)="selectSize('m')">M</span>
-                                                <span [ngClass]="sizeclasss" *ngIf="iss" (click)="selectSize('s')">S</span>
-                                                <span [ngClass]="sizeclassxs" *ngIf="isxs" (click)="selectSize('xs')">XS</span>
-                                            </div>
+                                            <!-- <div class="shop-product-size-list">
+                                                <div *ngFor="let s of sizelist;">
+                                                    <span [ngClass]="sizeclassxs"  (click)="selectSize('s.size')">{{s.size}}</span>
+                                                </div>
+                                            </div> -->
+                                            <ul *ngFor="let s of sizelist;" style=" display:inline;margin: 0;padding: 0;overflow: hidden;">
+                                                <li style="display:inline;padding:15px;font-size: 1.2rem;">{{s.size}}</li>
+
+                                            </ul>
                                         </div>
                                     </div>
                                     <!-- <div class="shop-product__block shop-product__block--color mb-20">

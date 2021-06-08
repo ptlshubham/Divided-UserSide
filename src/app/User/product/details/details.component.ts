@@ -131,27 +131,12 @@ export class DetailsComponent implements OnInit {
 
     this.detailsService.getProductSizelist(id).subscribe(data => {
       this.sizelist = data;
-      this.sizelist.forEach(element => {
-        if (element.size == 'XXL') {
-          this.isxxl = true;
+      for(let i=0;i<this.sizelist.length;i++){
+        if (this.sizelist[i].size == 'undefined') {
+         this.sizelist.splice(i,1);
         }
-        else if (element.size == 'Large') {
-          this.isl = true;
-        }
-        else if (element.size == 'Small') {
-          this.iss = true;
-        }
-        else if (element.size == 'Extra Small') {
-          this.isxs = true;
-        }
-        else if (element.size == 'Extra Large') {
-          this.isxl = true;
-        }
-        else if (element.size == 'Medium') {
-          this.ism = true;
-        }
-
-      });
+      }
+     
 
     })
   }
@@ -162,11 +147,11 @@ export class DetailsComponent implements OnInit {
     }
     else if (val == 'l') {
       this.sizeclassl = "single-size active";
-      this.ProductListModel.productSize = 'Large'
+      this.ProductListModel.productSize = 'L'
     }
     else if (val == 's') {
       this.sizeclasss = "single-size active";
-      this.ProductListModel.productSize = 'Small'
+      this.ProductListModel.productSize = 'S'
     }
     else if (val == 'xs') {
       this.sizeclassxs = "single-size active";
@@ -174,11 +159,11 @@ export class DetailsComponent implements OnInit {
     }
     else if (val == 'xl') {
       this.sizeclassxl = "single-size active";
-      this.ProductListModel.productSize = 'Extra Large'
+      this.ProductListModel.productSize = 'XL'
     }
     else if (val == 'm') {
       this.sizeclassxl = "single-size active";
-      this.ProductListModel.productSize = 'Medium'
+      this.ProductListModel.productSize = 'M'
     }
   }
   getProductimages() {
@@ -200,8 +185,10 @@ export class DetailsComponent implements OnInit {
 
   }
   addToCart(id, obj) {
+    debugger
+    // this.productListService. = true;
     if (localStorage.getItem('UserId') != undefined) {
-      this.ProductListModel.userid = localStorage.getItem('UserId');
+      this.ProductListModel.userid = localStorage.getItem('UserId') ;
       this.ProductListModel.productid = id;
       this.ProductListModel.quantity = 1;
       obj.quantity = 1;
@@ -216,6 +203,7 @@ export class DetailsComponent implements OnInit {
       localStorage.setItem('cart', JSON.stringify(obj));
 
     }
+
   }
 
   incrementQty() {
