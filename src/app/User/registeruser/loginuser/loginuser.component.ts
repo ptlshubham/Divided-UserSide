@@ -118,9 +118,15 @@ export class LoginuserComponent implements OnInit {
         });
       }
 
-
+     
       signInWithGoogle(): void {
-        this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+        debugger
+        this.authService.signIn(GoogleLoginProvider.PROVIDER_ID,null).then((res)=>{
+          this.authService.authState.subscribe((user) => {
+           debugger
+          });
+        });
+      
       }
     
       signInWithFB(): void {
