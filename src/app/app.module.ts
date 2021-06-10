@@ -85,7 +85,7 @@ export function tokenGetter() {
           },
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('561602290896109'),
+            provider: new FacebookLoginProvider('1285046815244544'),
           },
         ],
       } as SocialAuthServiceConfig,

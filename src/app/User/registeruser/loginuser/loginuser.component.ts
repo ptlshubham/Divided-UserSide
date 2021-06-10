@@ -124,13 +124,25 @@ export class LoginuserComponent implements OnInit {
         this.authService.signIn(GoogleLoginProvider.PROVIDER_ID,null).then((res)=>{
           this.authService.authState.subscribe((user) => {
            debugger
+           localStorage.setItem('UserId',user.id);
+           localStorage.setItem('Email',user.email);
+           localStorage.setItem('Username',user.firstName +' '+ user.lastName);
+           this.router.navigate(['home']);
           });
         });
       
       }
     
       signInWithFB(): void {
-        this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+        this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((res)=>{
+          this.authService.authState.subscribe((user) => {
+           debugger
+           localStorage.setItem('UserId',user.id);
+           localStorage.setItem('Email',user.email);
+           localStorage.setItem('Username',user.firstName +' '+ user.lastName);
+           this.router.navigate(['home']);
+          });
+        });;
       }
 
 }
