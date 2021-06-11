@@ -137,7 +137,7 @@ export class RegisteruserComponent implements OnInit {
         }
     }
     submitAdminRegister() {
-        debugger
+         
         this.RegisterModel.isactive = true;
         this.registerService.saveUser(this.RegisterModel).subscribe((response) => {
             this.router.navigate(['userlogin']);

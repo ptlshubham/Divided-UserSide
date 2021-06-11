@@ -57,7 +57,7 @@ export class CheckoutComponent implements OnInit {
     this.getStateList();
 
     this.getCart();
-    debugger
+     
     if (localStorage.getItem('UserId') != null || localStorage.getItem('UserId') != undefined) {
       this.isLogin = true;
       this.getUserAddress();
@@ -103,7 +103,7 @@ export class CheckoutComponent implements OnInit {
     })
   }
   getUserAddress() {
-    debugger
+     
     this.registerService.getAddress(localStorage.getItem('UserId')).subscribe((data: any) => {
       this.userAddress = data;
       this.userAddress.forEach(element => {
@@ -112,7 +112,7 @@ export class CheckoutComponent implements OnInit {
     });
   }
   selectaddress(idn, id) {
-    debugger
+     
     if (this.userAddress[idn].selected == false) {
       this.userAddress[idn].selected = true;
       this.userAddress.forEach(element => {
@@ -129,7 +129,7 @@ export class CheckoutComponent implements OnInit {
   continueLoginUser(credentials) {
     console.log("......data...." + credentials.email);
     this.loginService.login(credentials).subscribe(data => {
-      debugger
+       
       if (data == 1) {
         this.apiservice.showNotification('top', 'right', 'Wrong Email!', 'danger');
       }
@@ -171,7 +171,7 @@ export class CheckoutComponent implements OnInit {
         this.getCartList.forEach(element => {
           this.detailsService.getProductSizelist(element.ProductId).subscribe(data => {
             element.sizelist = data;
-            debugger
+             
             element.sizelist.forEach(element => {
               element.sizeclass = 'single-size';
             });
@@ -205,7 +205,7 @@ export class CheckoutComponent implements OnInit {
         this.getCartList.forEach(element => {
           this.detailsService.getProductSizelist(element.id).subscribe(data => {
             element.sizelist = data;
-            debugger
+             
             element.sizelist.forEach(element => {
               element.sizeclass = 'single-size';
             });
@@ -221,7 +221,7 @@ export class CheckoutComponent implements OnInit {
 
   }
   selectSize(ind, j, val) {
-    debugger
+     
     this.getCartList[ind].size = val;
     this.userOrdersModel.size = val;
     this.getCartList[ind].sizelist[j].sizeclass = 'single-size active';
@@ -243,7 +243,7 @@ export class CheckoutComponent implements OnInit {
     this.userOrdersModel.productid = this.getCartList;
     this.userOrdersModel.total = this.GrandTotal;
     this.userOrdersModel.status = 'Pending';
-    debugger
+     
     this.checkoutService.saveOrders(this.userOrdersModel).subscribe((data: any) => {
       alert("order succesfully");
     })
@@ -292,7 +292,7 @@ export class CheckoutComponent implements OnInit {
 
   }
   signupOpen() {
-    debugger
+     
     this.isSignup = true;
     this.isLogin = true;
   }

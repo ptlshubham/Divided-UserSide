@@ -40,7 +40,7 @@ export class WishComponent implements OnInit {
     })
   }
   addWishToCart(wish) {
-    debugger
+     
     var data = {
       userid: localStorage.getItem('UserId'),
       productid: wish.productid
@@ -51,7 +51,7 @@ export class WishComponent implements OnInit {
     })
   }
   removeWishToCart(id) {
-    debugger
+     
     this.navbaruserService.removeWish(id).subscribe((req) => {
       this.toaster.open({text:'Product remove from WishList Successfully.',caption:'Product',type:'dark',duration:4000,position:'bottom-center'});
       this.getWishList()

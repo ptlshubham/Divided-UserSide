@@ -2,35 +2,22 @@
     <app-navbaruser class="sticky-head"></app-navbaruser>
 
 
-    <div class="breadcrumb-area breadcrumb-bg-2 pt-50 pb-70" style="margin-top:86px;">
-        <div class="container">
+    <div class="breadcrumb-area breadcrumb pt-50 pb-70" style="margin-top:86px;">
+        <img src="src/assets/images/breadcrumb-bg/bg2.jpg" class="img-fluid" alt="">
+        <!-- <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="breadcrumb-title">Shop</h1>
-
-                    <!--=======  breadcrumb list  =======-->
-
-                    <!-- <ul class="breadcrumb-list">
-								<li class="breadcrumb-list__item"><a href="index.html">HOME</a></li>
-								<li class="breadcrumb-list__item breadcrumb-list__item--active">PRODUCTS</li>
-							</ul> -->
-
-                    <!--=======  End of breadcrumb list  =======-->
-
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="shop-page-wrapper">
-
-        <!--=======  shop page header  =======-->
-
         <div class="shop-page-header">
             <div class="container wide">
                 <div class="row align-items-center">
 
                     <div class="col-12 col-lg-7 col-md-10 d-none d-md-block">
-                        <!--=======  fitler titles  =======-->
                         <div class="filter-title filter-title--type-two">
                             <ul class="product-filter-menu">
                                 <li data-filter="*" [ngClass]="allDefaultclass" (click)="allDefault()" >All</li>
@@ -39,15 +26,9 @@
                                 <li data-filter=".sale" [ngClass]="saleclass" (click)="sale()">sale products</li>
                             </ul>
                         </div>
-                        <!--=======  End of fitler titles  =======-->
                     </div>
-
                     <div class="col-12 col-lg-5 col-md-2">
-                        <!--=======  filter icons  =======-->
-
                         <div class="filter-icons">
-                            <!--=======  filter dropdown  =======-->
-
                             <div class="single-icon filter-dropdown">
                                 <select class="nice-select">
 									<option value="0">Default sorting</option>
@@ -58,11 +39,6 @@
 									<option value="0">Sort by price: high to low</option>
 								</select>
                             </div>
-
-                            <!--=======  End of filter dropdown  =======-->
-
-                            <!--=======  grid icons  =======-->
-
                             <div class="single-icon grid-icons">
                                 <a data-target="five-column" [ngClass]="fiveclass" (click)="fiveColumn()"><i class="ti-layout-grid4-alt"></i></a>
                                 <a data-target="four-column" [ngClass]="fourclass" (click)="fourColumn()"><i class="ti-layout-grid3-alt"></i></a>
@@ -71,33 +47,19 @@
                                 <!-- <a data-target="list" [ngClass]="listclass" (click)="list()"><i class="ti-view-list"></i></a> -->
                             </div>
 
-                            <!--=======  End of grid icons  =======-->
-
-                            <!--=======  advance filter icon  =======-->
-
                             <div class="single-icon advance-filter-icon">
                                 <a id="advance-filter-active-btn" (click)="openFilter()"><i
 										class="ion-android-funnel"></i>
 									Filters</a>
                             </div>
 
-                            <!--=======  End of advance filter icon  =======-->
                         </div>
-
-                        <!--=======  End of filter icons  =======-->
                     </div>
 
                 </div>
             </div>
         </div>
 
-        <!--=======  End of shop page header  =======-->
-
-        <!--=============================================
-			=            shop advance filter area         =
-			=============================================-->
-        <!--  -->
-        <!-- class="shop-advance-filter-area" -->
 
         <div [ngClass]="filterclass" id="shop-advance-filter-area">
             <div class="shop-advance-filter-wrapper pt-50">

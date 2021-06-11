@@ -47,7 +47,7 @@ export class ListComponent implements OnInit {
   ) {
 
     this.activatedRoute.queryParams.subscribe((res: any) => {
-      debugger
+       
       if (res.val) {
         let data = JSON.parse(res.val);
         if (data.subid != undefined) {
@@ -211,7 +211,7 @@ export class ListComponent implements OnInit {
     this.getNavbarRoutedProducts();
   }
   addToCart(id, obj) {
-    debugger
+     
     // this.productListService. = true;
     if (this.UserId != undefined) {
       this.ProductListModel.userid = this.UserId;

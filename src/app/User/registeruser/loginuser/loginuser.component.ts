@@ -97,7 +97,7 @@ export class LoginuserComponent implements OnInit {
     loginUser(credentials) {
         console.log("......data...." + credentials.email);
         this.loginService.login(credentials).subscribe(data=>{
-          debugger
+           
           if(data ==1){
               this.apiservice.showNotification('top','right','Wrong Email!','danger');
           }
@@ -120,10 +120,10 @@ export class LoginuserComponent implements OnInit {
 
      
       signInWithGoogle(): void {
-        debugger
+         
         this.authService.signIn(GoogleLoginProvider.PROVIDER_ID,null).then((res)=>{
           this.authService.authState.subscribe((user) => {
-           debugger
+            
            localStorage.setItem('UserId',user.id);
            localStorage.setItem('Email',user.email);
            localStorage.setItem('Username',user.firstName +' '+ user.lastName);
@@ -136,7 +136,7 @@ export class LoginuserComponent implements OnInit {
       signInWithFB(): void {
         this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((res)=>{
           this.authService.authState.subscribe((user) => {
-           debugger
+            
            localStorage.setItem('UserId',user.id);
            localStorage.setItem('Email',user.email);
            localStorage.setItem('Username',user.firstName +' '+ user.lastName);

@@ -65,13 +65,13 @@ export class NavbaruserComponent implements OnInit {
       });
     }
     else{
-      debugger
+       
       if(localStorage.getItem('cart') != undefined){
         var test = localStorage.getItem('cart');
         var test2 = JSON.parse(test);
         var i=0;
         var j=0;
-        debugger
+         
           if(this.getCartList.length == 0){
             this.getCartList.push(test2);
             this.carttotal = this.carttotal +  this.getCartList[0].productPrice;
@@ -216,7 +216,7 @@ export class NavbaruserComponent implements OnInit {
 
   }
   logoutUser() {
-    debugger
+     
     localStorage.clear();
     this.isLogged = false;
     this.toaster.open({text:'User Logout Successfully.',caption:'Logout',type:'dark',duration:4000,position:'bottom-center'});

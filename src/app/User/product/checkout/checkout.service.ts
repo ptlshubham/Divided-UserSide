@@ -14,7 +14,7 @@ export class CheckoutService {
     private httpClient: HttpClient
   ) { }
   saveOrders(user: Userorders): Observable<any> {
-    debugger
+     
     return this.httpClient.post<any>(ApiService.saveUserOrdersURL, user);
   }
   sendEmail(id) {

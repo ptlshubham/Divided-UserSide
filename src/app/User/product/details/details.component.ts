@@ -113,7 +113,7 @@ export class DetailsComponent implements OnInit {
     });
   }
   getSimilarProducts() {
-    debugger
+     
     this.getDetails[0].category;
     this.productListService.getSimilar(this.getDetails[0].category).subscribe((data: any) => {
       this.similarProducts = data;
@@ -185,7 +185,7 @@ export class DetailsComponent implements OnInit {
 
   }
   addToCart(id, obj) {
-    debugger
+     
     // this.productListService. = true;
     if (localStorage.getItem('UserId') != undefined) {
       this.ProductListModel.userid = localStorage.getItem('UserId') ;

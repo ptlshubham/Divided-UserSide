@@ -70,7 +70,7 @@ export class CartComponent implements OnInit {
       if(localStorage.getItem('cart') != undefined){
         var test = localStorage.getItem('cart');
         var test2 = JSON.parse(test);
-        debugger
+         
         var i=0;
           if(this.getCartList.length == 0){
             this.getCartList.push(test2);
@@ -104,7 +104,7 @@ export class CartComponent implements OnInit {
 
  
   selectSize(ind,j,val){
-   debugger
+    
     this.getCartList[ind].size ==val;
     this.getCartList[ind].sizelist[j].sizeclass='single-size active';
 
@@ -127,7 +127,7 @@ export class CartComponent implements OnInit {
     }
   }
   // getWishToCartItem() {
-  //   debugger
+  //    
   //   this.ProductListModel.userid = 1;
   //   this.ProductListModel.productid = this.wish.productid;
   //   this.productListService.saveAddTocart(this.ProductListModel).subscribe((response) => {
@@ -135,7 +135,7 @@ export class CartComponent implements OnInit {
   //   })
   // }
   // removeWish() {
-  //   debugger
+  //    
   //   this.navbaruserService.removeWish(this.wish.id).subscribe((req) => {
   //   })
   // }
@@ -149,7 +149,7 @@ export class CartComponent implements OnInit {
 
   
   viewProductDetails(id) {
-    debugger
+     
     this.router.navigate(['/product/productdetails'], {
       queryParams: {
         val: id

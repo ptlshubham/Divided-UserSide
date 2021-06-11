@@ -146,7 +146,7 @@ export class ManageuserComponent implements OnInit {
     })
   }
   getOrdersForUser(){
-    debugger
+     
     this.registerService.getUserOrders(this.localUserId).subscribe((data: any) => {
       this.ordersUser = data;
     });
@@ -159,6 +159,6 @@ export class ManageuserComponent implements OnInit {
     })
   }
   viewOrdersDetails(data){
-    debugger
+     
   }
 }
