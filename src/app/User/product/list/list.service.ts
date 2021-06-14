@@ -44,7 +44,6 @@ export class ProductlistService {
     let data={
       id:id
     }
-     
     return this.httpClient.post<any>(ApiService.getSimilarProductURL, data);
   }
 

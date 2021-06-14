@@ -47,10 +47,10 @@
                                         <h2>{{d.productName}}</h2>
                                     </div>
                                     <div class="shop-product__price mb-30">
-                                        <span class="main-price discounted">₹ {{d.productPrice}}</span>
-                                        <span class="discounted-price">₹ {{d.discountPrice}}</span>
+                                        <span class="main-price discounted" *ngIf="d.discountPrice != 0">₹ {{d.productPrice}}</span>
+                                        <span class="discounted-price" *ngIf="d.discountPrice != 0">₹ {{d.discountPrice}}</span>
+                                        <span class="discounted-price" *ngIf="d.discountPrice == 0">₹ {{d.productPrice}}</span>
                                     </div>
-
                                     <div class="shop-product__short-desc mb-50">
                                         {{d.descripition}}
                                     </div>
@@ -64,7 +64,7 @@
                                                 </div>
                                             </div> -->
                                             <ul *ngFor="let s of sizelist;" style=" display:inline;margin: 0;padding: 0;overflow: hidden;">
-                                                <li style="display:inline;padding:15px;font-size: 1.2rem;">{{s.size}}</li>
+                                                <li style="display:inline;padding:15px;font-size: 1.2rem; border: 1px solid;margin-left: 2px;">{{s.size}}</li>
 
                                             </ul>
                                         </div>
