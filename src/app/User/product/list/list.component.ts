@@ -37,6 +37,7 @@ export class ListComponent implements OnInit {
   public popularList: Productlist[] = [];
   public WishListModel: Wishlist = new Wishlist;
   public wishList: Wishlist[] = [];
+  bannerimage:any;
 
   constructor(
     private productListService: ProductlistService,
@@ -206,6 +207,19 @@ export class ListComponent implements OnInit {
 
   }
   openCategories(id) {
+    debugger
+    this.category.forEach(element => {
+      element.SubCategory.forEach(ele => {
+        if(ele.id == id){
+          this.bannerimage = ele.bannersimage;
+        }
+        else{
+          this.bannerimage
+        }
+        
+      });
+     
+    });
     this.subid = null;
     this.catid = id;
     this.getNavbarRoutedProducts();
