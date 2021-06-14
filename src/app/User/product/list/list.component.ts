@@ -199,6 +199,10 @@ export class ListComponent implements OnInit {
       let data = {
         catid: this.catid
       }
+      this.productListService.getcatImage(this.catid).subscribe((data:any)=>{
+        data;
+        debugger
+      })
       this.productListService.getNavbarProduct(data).subscribe((data: any) => {
         this.productList = data;
       });

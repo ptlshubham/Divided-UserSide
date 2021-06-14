@@ -18,6 +18,12 @@ export class ProductlistService {
   getProduct(): Observable<Productlist[]>{
     return this.httpClient.get<any>(ApiService.getProductListURL);
   }
+  getcatImage(id){
+    let data={
+      id:id
+    }
+    return this.httpClient.post<any>(ApiService.getCatImageURL,data);
+  }
   getNavbarProduct(data): Observable<Productlist[]>{
    
     return this.httpClient.post<any>(ApiService.getNavbarRoutedProductURL,data);
