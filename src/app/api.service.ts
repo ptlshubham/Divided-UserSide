@@ -90,7 +90,7 @@ export class ApiService {
   public static getNewArrivalURL: string = ApiService.HOST_URL + '/user/GetNewArrivalProduct';
   public static getProductSizeListURL: string = ApiService.HOST_URL + '/user/GetProductSizeList';
   public static getSimilarProductURL: string = ApiService.HOST_URL + '/user/GetSimilarProductList';
-  public static getCatImageURL: string = ApiService.HOST_URL + 'user/getCatImage';
+  public static getCatImageURL: string = ApiService.HOST_URL + '/user/getCatImage';
   showNotification(from, align, msg, color) {
      
 

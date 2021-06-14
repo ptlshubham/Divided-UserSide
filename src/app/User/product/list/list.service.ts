@@ -22,7 +22,7 @@ export class ProductlistService {
     let data={
       id:id
     }
-    return this.httpClient.post<any>(ApiService.getCatImageURL,data);
+    return this.httpClient.post(ApiService.getCatImageURL,data);
   }
   getNavbarProduct(data): Observable<Productlist[]>{
    

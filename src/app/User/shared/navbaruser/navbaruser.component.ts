@@ -27,6 +27,7 @@ export class NavbaruserComponent implements OnInit {
   openSub: boolean = false;
   isLogged: boolean = false;
   carttotal:number=0;
+  subid:any;
   public uName = localStorage.getItem('Username');
 
   constructor(
@@ -186,10 +187,11 @@ export class NavbaruserComponent implements OnInit {
         })
       })
     });
-    this.categoryList;
+   
 
   }
   openSubToSub(mainid, subid, i, j) {
+    this.subid = subid;
     this.categoryList[i].SubCategory[j].subtosub = [];
     if (this.openSub == false) {
       this.openSub = true;
@@ -224,7 +226,7 @@ export class NavbaruserComponent implements OnInit {
   getPoductToSubNavbar(id) {
     this.router.navigate(['/product/productlist'], {
       queryParams: {
-        val:JSON.stringify({subid:id})
+        val:JSON.stringify({subid:id,catid:this.subid})
       }
     })
   }

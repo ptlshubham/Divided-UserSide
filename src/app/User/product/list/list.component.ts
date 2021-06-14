@@ -50,19 +50,22 @@ export class ListComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe((res: any) => {
        
       if (res.val) {
+        debugger
         let data = JSON.parse(res.val);
         if (data.subid != undefined) {
           this.subid = data.subid;
-        }
-        else {
           this.catid = data.catid;
         }
+        // else {
+        //   this.catid = data.catid;
+        // }
       }
 
 
       this.getNavbarRoutedProducts();
     })
-    if (this.subid == undefined && this.catid == undefined) {
+    if (this.subid == undefined && this.catid == undefined) 
+    {
       this.getProducts();
     }
     this.fiveclass = 'active';
@@ -187,38 +190,51 @@ export class ListComponent implements OnInit {
     })
   }
   getNavbarRoutedProducts() {
+    debugger
     this.productList = [];
     if (this.subid != undefined || this.subid != null) {
-      let data = {
+      debugger
+      let data1 = {
         subid: this.subid
       }
-      this.productListService.getNavbarProduct(data).subscribe((data: any) => {
+    
+      this.productListService.getNavbarProduct(data1).subscribe((data: any) => {
         this.productList = data;
       });
-    }
-    else {
-      let data = {
-        catid: this.catid
-      }
       this.productListService.getcatImage(this.catid).subscribe((data:any)=>{
-        data;
-        debugger
+        let val=data[0].bannersimage;
+        this.bannerimage = val;
+        if(this.bannerimage == undefined || this.bannerimage == null){
+          this.bannerimage="/images/categorybanners/bg2.jpg";
+        }
+      
       })
-      this.productListService.getNavbarProduct(data).subscribe((data: any) => {
-        this.productList = data;
-      });
     }
+    // else {
+    //   debugger
+    //   let data1 = {
+    //     catid: this.catid
+    //   }
+     
+    //   this.productListService.getNavbarProduct(data1).subscribe((data: any) => {
+    //     this.productList = data;
+    //     this.productListService.getcatImage(this.catid).subscribe((data:any)=>{
+    //       data;
+    //       debugger
+    //     })
+    //   });
+    // }
 
   }
   openCategories(id) {
-    debugger
+    
     this.category.forEach(element => {
       element.SubCategory.forEach(ele => {
         if(ele.id == id){
           this.bannerimage = ele.bannersimage;
         }
         else{
-          this.bannerimage
+          this.bannerimage="/images/categorybanners/bg2.jpg";
         }
         
       });
