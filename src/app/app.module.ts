@@ -40,7 +40,7 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     FormsModule,
     RouterModule.forRoot(AppRoutes, {
-      useHash: true
+      useHash: false
     }),
     NgbModule,
     HttpModule,
@@ -62,8 +62,7 @@ export function tokenGetter() {
     ImageViewerModule,
     ToastNotificationsModule,
     SocialLoginModule
-   
-   
+      
   ],
   declarations: [
     AppComponent,
