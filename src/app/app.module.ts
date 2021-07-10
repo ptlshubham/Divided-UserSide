@@ -32,69 +32,69 @@ import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-logi
 
 
 export function tokenGetter() {
-  return localStorage.getItem('access_token');
+    return localStorage.getItem('access_token');
 };
 
 @NgModule({
-  imports: [
-    BrowserAnimationsModule,
-    FormsModule,
-    RouterModule.forRoot(AppRoutes, {
-      useHash: true
-    }),
-    NgbModule,
-    HttpModule,
-    HttpClientModule,
-    HomeModule,
-    ProductModule,
-    FooterUserModule,
-    NavbaruserModule,
-    ContactusModule,
-    AboutusModule,
-    IvyCarouselModule,
-    NgxStarRatingModule,
-    BrowserModule,
-    RegisteruserModule,
-    NgImageSliderModule,
-    NgMultiSelectDropDownModule.forRoot(),
-    GalleryModule,
-    LightboxModule,
-    ImageViewerModule,
-    ToastNotificationsModule,
-    SocialLoginModule
-   
-   
-  ],
-  declarations: [
-    AppComponent,
-  ],
-  providers: [
-    AuthService,
-    AuthGuard,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: true,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              '1091255103461-4g04nk0lfr26cg4fil6kic5m1ctcu7a7.apps.googleusercontent.com'
-            ),
-          },
-          {
-            id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('1285046815244544'),
-          },
-        ],
-      } as SocialAuthServiceConfig,
-    }
-  ],
-  bootstrap: [AppComponent],
-  exports: [
-    
-  ]
+    imports: [
+        BrowserAnimationsModule,
+        FormsModule,
+        RouterModule.forRoot(AppRoutes, {
+            useHash: false
+        }),
+        NgbModule,
+        HttpModule,
+        HttpClientModule,
+        HomeModule,
+        ProductModule,
+        FooterUserModule,
+        NavbaruserModule,
+        ContactusModule,
+        AboutusModule,
+        IvyCarouselModule,
+        NgxStarRatingModule,
+        BrowserModule,
+        RegisteruserModule,
+        NgImageSliderModule,
+        NgMultiSelectDropDownModule.forRoot(),
+        GalleryModule,
+        LightboxModule,
+        ImageViewerModule,
+        ToastNotificationsModule,
+        SocialLoginModule
+
+
+    ],
+    declarations: [
+        AppComponent,
+    ],
+    providers: [
+        AuthService,
+        AuthGuard,
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+        {
+            provide: 'SocialAuthServiceConfig',
+            useValue: {
+                autoLogin: true,
+                providers: [
+                    {
+                        id: GoogleLoginProvider.PROVIDER_ID,
+                        provider: new GoogleLoginProvider(
+                            '1091255103461-4g04nk0lfr26cg4fil6kic5m1ctcu7a7.apps.googleusercontent.com'
+                        ),
+                    },
+                    {
+                        id: FacebookLoginProvider.PROVIDER_ID,
+                        provider: new FacebookLoginProvider('1285046815244544'),
+                    },
+                ],
+            } as SocialAuthServiceConfig,
+        }
+    ],
+    bootstrap: [AppComponent],
+    exports: [
+
+    ]
 
 })
 export class AppModule { }

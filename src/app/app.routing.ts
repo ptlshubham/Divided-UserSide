@@ -1,15 +1,16 @@
 import { Routes } from '@angular/router';
 
-// import { AdminLayoutComponent } from './Admin/layouts/admin/admin-layout.component';
-// import { AuthLayoutComponent } from './Admin/layouts/auth/auth-layout.component';
+
+
 import { AuthGuard } from './auth.guard';
 
 export const AppRoutes: Routes = [
     {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-},
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
+    },
+
     {
         path: 'home ',
         loadChildren: './User/home/home.module#HomeModule'
@@ -33,8 +34,12 @@ export const AppRoutes: Routes = [
     {
         path: 'user',
         loadChildren: './User/registeruser/registeruser.module#RegisteruserModule'
+    },
+    {
+        path : 'manage',
+        loadChildren: './manage/manage.module#ManageModule'
     }
-    ]
+]
 // {
 //     path: '',
 //     component: AuthLayoutComponent,
@@ -43,4 +48,3 @@ export const AppRoutes: Routes = [
 //         loadChildren: './Admin/pages/pages.module#PagesModule'
 //     }]
 // },
-

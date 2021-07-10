@@ -37,7 +37,11 @@
                             "src/assets/css/main.css",
                             "src/assets/revolution/css/settings.css",
                             "src/assets/revolution/css/navigation.css",
-                            "src/assets/revolution/custom-setting.css"
+                            "src/assets/revolution/custom-setting.css",
+
+                            "src/assets/scss/paper-dashboard.scss",
+                            "src/assets/manage/assets/css/demo.css"
+
                         ],
                         "scripts": [
                             "node_modules/jquery/dist/jquery.js",
@@ -72,7 +76,6 @@
                             "node_modules/jasny-bootstrap/dist/js/jasny-bootstrap.min.js",
                             "node_modules/sweetalert2/dist/sweetalert2.js",
                             "src/assets/js/jquery.validate.min.js",
-
                             "src/assets/js/plugins.js",
                             "src/assets/js/main.js",
                             "src/assets/js/ajax-mail.js",
@@ -162,8 +165,6 @@
                             "node_modules/jasny-bootstrap/dist/js/jasny-bootstrap.min.js",
                             "node_modules/sweetalert2/dist/sweetalert2.js",
                             "src/assets/js/jquery.validate.min.js",
-
-
                             "src/assets/js/plugins.js",
                             "src/assets/js/main.js",
                             "src/assets/js/ajax-mail.js",
@@ -181,7 +182,7 @@
                             "node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
                             "node_modules/sweetalert2/src/sweetalert2.scss",
                             "src/assets/scss/paper-dashboard.scss",
-                           
+
 
 
                             "src/styles.css",
