@@ -21,7 +21,7 @@
                     <div class="site-main-nav d-none d-lg-block">
                         <nav class="site-nav center-menu">
                             <ul>
-                                <li class="menu-item-has-children"><a routerLink="/productlist1">Collection</a>
+                                <li class="menu-item-has-children" routerLink="/productlist1"><a >Collection</a>
                                     <ul class="sub-menu mega-menu mega-menu-column-4">
                                         <li *ngFor="let c of categoryList; let i=index"><a class="mega-column-title"
                                                (click)="getPoductToNavbar(c.id)">{{c.name}}</a>
@@ -43,16 +43,16 @@
                                     </ul>
                                 </li>
 
-                                <li class="menu-item"><a routerLink="/aboutus">About Us</a>
+                                <li class="menu-item" routerLink="/aboutus"><a>About Us</a>
 
                                 </li>
-                                <li class="menu-item "><a routerLink="/contactus">Contact Us</a>
+                                <li class="menu-item " routerLink="/contactus"><a>Contact Us</a>
 
                                 </li>
                                 <li class="menu-item " routerLink="/product/productlist"><a>New Arrivals</a>
                                 </li>
-                                <li class="menu-item " routerLink="mobileapp"><a>Lovely Dresses</a>
-                                </li>
+                                <!-- <li class="menu-item " routerLink="mobileapp"><a>Lovely Dresses</a>
+                                </li> -->
                             </ul>
                         </nav>
                     </div>

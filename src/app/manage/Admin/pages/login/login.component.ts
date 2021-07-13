@@ -39,8 +39,10 @@ export class LoginComponent implements OnInit{
         private router:Router,
         private apiservice:ApiService
     ) {
+        localStorage.removeItem('authenticationAdminToken');
         this.nativeElement = element.nativeElement;
         this.sidebarVisible = false;
+
 
     }
     checkFullPageBackgroundImage(){

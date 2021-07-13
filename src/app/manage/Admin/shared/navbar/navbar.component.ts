@@ -140,7 +140,7 @@ export class NavbarComponent implements OnInit{
         return 'Dashboard';
     }
     logout(){
-        localStorage.clear();
+        localStorage.removeItem('authenticationAdminToken');
         this.router.navigate(['manage/pages/login'])
     }
 
