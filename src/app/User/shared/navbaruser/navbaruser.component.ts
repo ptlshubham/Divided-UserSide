@@ -26,27 +26,27 @@ export class NavbaruserComponent implements OnInit {
   public subtosub: any = [];
   openSub: boolean = false;
   isLogged: boolean = false;
-  carttotal:number=0;
-  subid:any;
+  carttotal: number = 0;
+  subid: any;
   public uName = localStorage.getItem('Username');
 
   constructor(
     private navbaruserService: NavbaruserService,
     private router: Router,
-    private apiservice:ApiService,
+    private apiservice: ApiService,
     private toaster: Toaster
   ) {
-    if(localStorage.getItem('UserId') != undefined || localStorage.getItem('UserId') != null){
+    if (localStorage.getItem('UserId') != undefined || localStorage.getItem('UserId') != null) {
       this.isLogged = true;
     }
-    else{
+    else {
       this.isLogged = false;
     }
-     this.getCart();
-      // setInterval(() => this.getCart(), 3500);
-      this.getWishList();
-    // setInterval(() => this.getWishList(), 3500);
-     this.getCategoryList();
+    this.getCart();
+    setInterval(() => this.getCart(), 3500);
+    this.getWishList();
+    setInterval(() => this.getWishList(), 3500);
+    this.getCategoryList();
   }
 
   ngOnInit(): void {
@@ -57,101 +57,101 @@ export class NavbaruserComponent implements OnInit {
   }
   getCart() {
     this.carttotal = 0;
-    if(localStorage.getItem('UserId') != undefined){
+    if (localStorage.getItem('UserId') != undefined) {
       this.navbaruserService.getCartList().subscribe((data: any) => {
         this.getCartList = data;
-        this.getCartList.forEach(element=>{
+        this.getCartList.forEach(element => {
           this.carttotal = this.carttotal + element.productPrice;
         })
       });
     }
-    else{
-       
-      if(localStorage.getItem('cart') != undefined){
+    else {
+
+      if (localStorage.getItem('cart') != undefined) {
         var test = localStorage.getItem('cart');
         var test2 = JSON.parse(test);
-        var i=0;
-        var j=0;
-         
-          if(this.getCartList.length == 0){
-            this.getCartList.push(test2);
-            this.carttotal = this.carttotal +  this.getCartList[0].productPrice;
-          }
-          else{
-            this.getCartList.forEach(element =>{
-              if(element.id != test2.id){
-                i++;
-              }
-              else{
-                j++;
-              }
-            })
-          }
-          if(i >0 && j==0){
-            this.getCartList.push(test2);
-           
-            this.getCartList.forEach(element=>{
-              this.carttotal = this.carttotal + element.productPrice;
-            })
-          }
-          else{
-            this.getCartList.forEach(element=>{
-              this.carttotal = this.carttotal + element.productPrice;
-            })
-          }
+        var i = 0;
+        var j = 0;
+
+        if (this.getCartList.length == 0) {
+          this.getCartList.push(test2);
+          this.carttotal = this.carttotal + this.getCartList[0].productPrice;
+        }
+        else {
+          this.getCartList.forEach(element => {
+            if (element.id != test2.id) {
+              i++;
+            }
+            else {
+              j++;
+            }
+          })
+        }
+        if (i > 0 && j == 0) {
+          this.getCartList.push(test2);
+
+          this.getCartList.forEach(element => {
+            this.carttotal = this.carttotal + element.productPrice;
+          })
+        }
+        else {
+          this.getCartList.forEach(element => {
+            this.carttotal = this.carttotal + element.productPrice;
+          })
+        }
       }
-     
+
     }
-    
+
   }
   getWishList() {
-    if(localStorage.getItem('UserId') != undefined){
+    if (localStorage.getItem('UserId') != undefined) {
       this.navbaruserService.getWish().subscribe((data: any) => {
         this.wishList = data;
       });
     }
-    else{
-      if(localStorage.getItem('wish') != undefined){
+    else {
+      if (localStorage.getItem('wish') != undefined) {
         var test = localStorage.getItem('wish');
         var test2 = JSON.parse(test);
-        var i=0;
-        var j=0;
-          if(this.getCartList.length == 0){
-            this.wishList.push(test2);
-          }
-          else{
-            this.wishList.forEach(element =>{
-              if(element.id == test2.id){
-                i++;
-              }
-              else{
-                j++;
-              }
-            })
-          }
-          if(i >0 && j==0){
-            this.wishList.push(test2);
-           
-          }
+        var i = 0;
+        var j = 0;
+        if (this.getCartList.length == 0) {
+          this.wishList.push(test2);
+        }
+        else {
+          this.wishList.forEach(element => {
+            if (element.id == test2.id) {
+              i++;
+            }
+            else {
+              j++;
+            }
+          })
+        }
+        if (i > 0 && j == 0) {
+          this.wishList.push(test2);
+
+        }
       }
-     
+
     }
-   
+
   }
   removeWishItem(index, id) {
-   
+
     this.navbaruserService.removeWish(id).subscribe((req) => {
       this.wishList.splice(index, 1);
-      this.toaster.open({text:'Product remove from WishList Successfully.',caption:'Product',type:'dark',duration:4000,position:'bottom-center'});
+      this.toaster.open({ text: 'Product remove from WishList Successfully.', caption: 'Product', type: 'dark', duration: 4000, position: 'bottom-center' });
     })
   }
   removeCartItem(index, id) {
     localStorage.removeItem('cart');
-    this.carttotal =this.carttotal- this.getCartList[index].productPrice;
+    this.carttotal = this.carttotal - this.getCartList[index].productPrice;
     this.navbaruserService.removeCart(id).subscribe((req) => {
-      this.carttotal= this.carttotal - this.getCartList[index].productPrice;
+      this.carttotal = this.carttotal - this.getCartList[index].productPrice;
       this.getCartList.splice(index, 1);
-      this.toaster.open({text:'Product remove from Cart Successfully.',caption:'Product',type:'dark',duration:4000,position:'bottom-center'});
+      this.toaster.open({ text: 'Product remove from Cart Successfully.', caption: 'Product', type: 'dark', duration: 4000, position: 'bottom-center' });
     })
   }
 
@@ -187,7 +187,7 @@ export class NavbaruserComponent implements OnInit {
         })
       })
     });
-   
+
 
   }
   openSubToSub(mainid, subid, i, j) {
@@ -200,8 +200,8 @@ export class NavbaruserComponent implements OnInit {
           this.subtosub = data;
           this.categoryList[i].SubCategory[j].subtosub = data;
           this.categoryList[i].SubCategory[j].isopen = true;
-          if(data.length ==0){
-            this.getPoductToNavbar( this.categoryList[i].SubCategory[j].id);
+          if (data.length == 0) {
+            this.getPoductToNavbar(this.categoryList[i].SubCategory[j].id);
           }
         }
         else {
@@ -218,22 +218,22 @@ export class NavbaruserComponent implements OnInit {
 
   }
   logoutUser() {
-     
+
     localStorage.clear();
     this.isLogged = false;
-    this.toaster.open({text:'User Logout Successfully.',caption:'Logout',type:'dark',duration:4000,position:'bottom-center'});
+    this.toaster.open({ text: 'User Logout Successfully.', caption: 'Logout', type: 'dark', duration: 4000, position: 'bottom-center' });
   }
   getPoductToSubNavbar(id) {
     this.router.navigate(['/product/productlist'], {
       queryParams: {
-        val:JSON.stringify({subid:id,catid:this.subid})
+        val: JSON.stringify({ subid: id, catid: this.subid })
       }
     })
   }
-  getPoductToNavbar(id){
+  getPoductToNavbar(id) {
     this.router.navigate(['/product/productlist'], {
       queryParams: {
-        val: JSON.stringify({catid:id})
+        val: JSON.stringify({ catid: id })
       }
     })
   }

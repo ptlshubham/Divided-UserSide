@@ -172,7 +172,7 @@ export class InventoryComponent implements OnInit {
     });
   }
   editproduct(){
-    this.router.navigate(['category'], {
+    this.router.navigate(['manage/category'], {
       queryParams: {
         value: JSON.stringify(this.Chagesproduct)
       },

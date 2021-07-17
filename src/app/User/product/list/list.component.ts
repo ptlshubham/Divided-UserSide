@@ -158,15 +158,15 @@ export class ListComponent implements OnInit {
     this.column = 'row product-isotope shop-product-wrap three-column';
     this.columnrow = 'col-12 col-md-6 col-sm-6 mb-45 sale col-lg-4';
   }
-  // list() {
-  //   this.listclass = 'active';
-  //   this.fiveclass = '';
-  //   this.fourclass = '';
-  //   this.threeclass = '';
-  //   this.column='row product-isotope shop-product-wrap list';
-  //   this.columnrow='col-12 col-md-6 col-sm-6 mb-45 sale col-lg-3';
+  list() {
+    this.listclass = 'active';
+    this.fiveclass = '';
+    this.fourclass = '';
+    this.threeclass = '';
+    this.column='row product-isotope shop-product-wrap list';
+    this.columnrow='col-12 col-md-6 col-sm-6 mb-45 sale col-lg-3';
 
-  // }
+  }
   openFilter() {
 
     if (this.open == false) {
@@ -190,10 +190,8 @@ export class ListComponent implements OnInit {
     })
   }
   getNavbarRoutedProducts() {
-    debugger
     this.productList = [];
     if (this.subid != undefined || this.subid != null) {
-      debugger
       let data1 = {
         subid: this.subid
       }

@@ -23,52 +23,7 @@ const routes: Routes = [
                 loadChildren: './Admin/dashboard/dashboard.module#DashboardModule',
                 canActivate: [AuthGuard]
             },
-
-            {
-                path: 'components',
-                loadChildren: './Admin/components/components.module#ComponentsModule',
-                canActivate: [AuthGuard]
-            },
-            {
-                path: 'forms',
-                loadChildren: './Admin/forms/forms.module#Forms',
-                canActivate: [AuthGuard]
-            },
-            {
-                path: 'tables',
-                loadChildren: './Admin/tables/tables.module#TablesModule',
-                canActivate: [AuthGuard]
-            },
-            {
-                path: 'maps',
-                loadChildren: './Admin/maps/maps.module#MapsModule',
-                canActivate: [AuthGuard]
-            },
-            {
-                path: 'charts',
-                loadChildren: './Admin/charts/charts.module#ChartsModule',
-                canActivate: [AuthGuard]
-            },
-            {
-                path: 'calendar',
-                loadChildren: './Admin/calendar/calendar.module#CalendarModule',
-                canActivate: [AuthGuard]
-            },
-            {
-                path: '',
-                loadChildren: './Admin/userpage/user.module#UserModule',
-                canActivate: [AuthGuard]
-            },
-            {
-                path: '',
-                loadChildren: './Admin/timeline/timeline.module#TimelineModule',
-                canActivate: [AuthGuard]
-            },
-            {
-                path: '',
-                loadChildren: './Admin/widgets/widgets.module#WidgetsModule',
-                canActivate: [AuthGuard]
-            },
+   
             {
                 path: '',
                 loadChildren: './Admin/category/category.module#CategoryModule',

@@ -7582,7 +7582,7 @@ nav.site-nav > ul > li {
 
 .single-sidebar-widget--list--category li {
   padding: 0;
-  padding-bottom: 20px; }
+  padding-bottom: 10px; }
   .single-sidebar-widget--list--category li .quantity {
     float: right;
     margin-right: 20px;

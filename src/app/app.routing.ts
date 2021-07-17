@@ -19,10 +19,10 @@ export const AppRoutes: Routes = [
         path: 'product',
         loadChildren: './User/product/product.module#ProductModule'
     },
-    {
-        path: '',
-        loadChildren: './User/aboutus/aboutus.module#AboutusModule'
-    },
+    // {
+    //     path: '',
+    //     loadChildren: './User/aboutus/aboutus.module#AboutusModule'
+    // },
     {
         path: '',
         loadChildren: './User/contactus/contactus.module#ContactusModule'

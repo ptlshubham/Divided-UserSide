@@ -246,7 +246,7 @@
                                 <ul class="single-sidebar-widget--list single-sidebar-widget--list--category">
                                     <li class="has-children" *ngFor="let cat of category ;let i=index">
                                         <a>{{cat.name}} </a> <span class="quantity">{{cat.SubCategory.length}}</span>
-                                        <ul *ngIf="cat.SubCategory.isopen" [style.display]="menuShow" style="overflow: hidden;height: 90px;padding-top: 0px;
+                                        <ul *ngIf="cat.SubCategory.isopen" [style.display]="menuShow" style="overflow: hidden;height:120px;padding-top: 0px;
                                         margin-top: 3.12292px; padding-bottom: 0px;margin-bottom:0px;line-height: 16px;">
                                             <li *ngFor="let sub of cat.SubCategory;let j=index" (click)="openCategories(sub.id)" ><a>{{sub.name}}</a></li>
                                         </ul>
