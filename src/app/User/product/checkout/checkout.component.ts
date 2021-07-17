@@ -6,6 +6,7 @@ import { RegisterUserModel } from 'app/User/registeruser/registeruser.model';
 import { RegisterUserService } from 'app/User/registeruser/registeruser.service';
 import { AuthService } from 'app/User/services/auth.service';
 import { NavbaruserService } from 'app/User/shared/navbaruser/navbaruser.service';
+import { Toaster } from 'ngx-toast-notifications';
 import { DetailsService } from '../details/details.service';
 import { Address } from './address.model';
 import { CheckoutService } from './checkout.service';
@@ -52,7 +53,8 @@ export class CheckoutComponent implements OnInit {
     private checkoutService: CheckoutService,
     private detailsService: DetailsService,
     // private RegisterCheckoutModel: RegisterUserModel
-
+    private toaster: Toaster
+    
   ) {
     this.getStateList();
 
@@ -97,7 +99,7 @@ export class CheckoutComponent implements OnInit {
     this.userAddressModel.userid = this.localUserId;
     this.userAddressModel.state = this.selectedstate;
     this.registerService.saveUserAddress(this.userAddressModel).subscribe((response) => {
-      this.apiservice.showNotification('top', 'right', 'Address Successfully Saved.', 'success');
+      this.toaster.open({text:'Address Successfully Saved.',caption:'Successfully',type:'dark',duration:4000,position:'bottom-center'});
       this.isShow = false;
       this.getUserAddress();
     })
@@ -131,11 +133,10 @@ export class CheckoutComponent implements OnInit {
     this.loginService.login(credentials).subscribe(data => {
        
       if (data == 1) {
-        this.apiservice.showNotification('top', 'right', 'Wrong Email!', 'danger');
+        this.toaster.open({text:'Please enter valid Email ID!',caption:'Incorrect Email',type:'danger',duration:4000,position:'bottom-center'});
       }
       else if (data == 2) {
-
-        this.apiservice.showNotification('top', 'right', 'Wrong Password!', 'danger');
+        this.toaster.open({text:'Please enter valid password!',caption:'Incorrect Password',type:'danger',duration:4000,position:'bottom-center'});
 
       }
       else {
@@ -295,6 +296,10 @@ export class CheckoutComponent implements OnInit {
      
     this.isSignup = true;
     this.isLogin = true;
+  }
+  loginOpen(){
+    this.isSignup = false;
+    this.isLogin = false;
   }
   submitUserRegister() {
     // this.RegisterCheckoutModel.isactive = true;

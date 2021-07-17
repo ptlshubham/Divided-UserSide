@@ -33,21 +33,32 @@ export class CartComponent implements OnInit {
   isl:boolean=false;
   iss:boolean=false;
   isxs:boolean=false;
+  test2:any=[];
   constructor(
     private navbaruserService: NavbaruserService,
     private productListService: ProductlistService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private detailsService: DetailsService,
-    private toaster: Toaster
+    private toaster: Toaster,
+    private activatedroute:ActivatedRoute
   ) {
  
     this.quantity = 1;
+    this.activatedRoute.queryParams.subscribe((res:any)=>{
+      if(res){
+        this.getCartList = JSON.parse(res.data);
+        debugger
+      }
+    })
     this.getCart();
   }
   ngOnInit(): void {
   }
   getCart() {
+
+
+    
     if(localStorage.getItem('UserId') != null || localStorage.getItem('userId') != undefined){
       this.navbaruserService.getCartList().subscribe((data: any) => {
         this.getCartList = data;
@@ -66,37 +77,61 @@ export class CartComponent implements OnInit {
         });
       });
     }
-    else{
-      if(localStorage.getItem('cart') != undefined){
-        var test = localStorage.getItem('cart');
-        var test2 = JSON.parse(test);
-         
-        var i=0;
-          if(this.getCartList.length == 0){
-            this.getCartList.push(test2);
+    else {
+    
+      this.test2=[];
+      if (localStorage.getItem('iscart') != undefined) {
+        debugger
+        // var test = localStorage.getItem('cart');
+        // this.test2 = JSON.parse(test);
+        var i = 0;
+        var j = 0;
+        for (let idx = 1; idx < 10; idx++) {
+          var test = localStorage.getItem('cart'+idx);
+          var test1 = JSON.parse(test);
+          if(test1 != null){
+            this.test2.push(test1);
           }
-          else{
-            this.getCartList.forEach(element =>{
-              if(element.id != test2.id){
-                i++;
-              }
-            })
-          }
-          if(i >0){
-            this.getCartList.push(test2);
-          }
-            this.getCartList.forEach(element=>{
-              element.quantity = 1;
-              this.detailsService.getProductSizelist(element.ProductId).subscribe(data=>{
-                element.sizelist=data;
-                element.sizelist.forEach(element => {
-                  element.sizeclass='single-size';
-                });
-              });
-              element.total = element.productPrice*element.quantity;
-              this.GrandTotal = this.GrandTotal + element.total;
-            })
+        
           
+        }
+        debugger
+        if (this.getCartList.length == 0 && this.test2.length > 0) {
+          this.test2.forEach(element => {
+            this.getCartList.push(element);
+          });
+          //  this.carttotal = this.carttotal + this.getCartList[0].productPrice;
+        }
+        else {
+          debugger
+          if(this.test2.length >0){
+            this.test2.forEach(element => {
+              this.getCartList.forEach((element1 => {
+                if (element.id != element1.id) {
+                  i++;
+                }
+                else {
+                  j++;
+                }
+              }));
+              if (i > 0 && j == 0) {
+                this.getCartList.push(element);
+                // this.getCartList.forEach(element => {
+                //   this.carttotal = this.carttotal + element.productPrice;
+                // })
+              }
+              // else {
+              //   this.getCartList.forEach(element => {
+              //     this.carttotal = this.carttotal + element.productPrice;
+              //   })
+              // }
+            });
+          }
+        
+        }
+
+
+
       }
     }
     

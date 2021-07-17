@@ -12,8 +12,8 @@ import { Wishlist } from './wishlist.model';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  fiveclass: string = 'active';
-  fourclass: string = '';
+  fiveclass: string = '';
+  fourclass: string = 'active';
   threeclass: string = '';
   listclass: string = '';
   allDefaultclass: string = 'active';
@@ -38,6 +38,8 @@ export class ListComponent implements OnInit {
   public WishListModel: Wishlist = new Wishlist;
   public wishList: Wishlist[] = [];
   bannerimage:any;
+  cartindex:any;
+  trmp:any=[];
 
   constructor(
     private productListService: ProductlistService,
@@ -46,7 +48,7 @@ export class ListComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private toaster: Toaster
   ) {
-
+    this.cartindex=0;
     this.activatedRoute.queryParams.subscribe((res: any) => {
        
       if (res.val) {
@@ -68,11 +70,13 @@ export class ListComponent implements OnInit {
     {
       this.getProducts();
     }
-    this.fiveclass = 'active';
+    // this.fiveclass = 'active';
+    this.fourclass = 'active';
 
     this.getMainCategory(0);
     this.menuShow = 'display:none';
     this.getPopularProducts();
+    this.fourColumn();
   }
 
   ngOnInit(): void {
@@ -257,8 +261,11 @@ export class ListComponent implements OnInit {
       })
     }
     else {
+      debugger
       obj.quantity = 1;
-      localStorage.setItem('cart', JSON.stringify(obj));
+      this.cartindex++;
+      localStorage.setItem('iscart','true');
+      localStorage.setItem('cart'+this.cartindex, JSON.stringify(obj));
 
     }
 
