@@ -47,7 +47,7 @@ export class CartComponent implements OnInit {
     this.quantity = 1;
     this.activatedRoute.queryParams.subscribe((res:any)=>{
       if(res){
-        this.getCartList = JSON.parse(res.data);
+        // this.getCartList = JSON.parse(res.data);
         debugger
       }
     })
@@ -78,35 +78,63 @@ export class CartComponent implements OnInit {
       });
     }
     else {
-    
+      
       this.test2=[];
       if (localStorage.getItem('iscart') != undefined) {
-        debugger
+        
         // var test = localStorage.getItem('cart');
         // this.test2 = JSON.parse(test);
-        var i = 0;
-        var j = 0;
+      
         for (let idx = 1; idx < 10; idx++) {
           var test = localStorage.getItem('cart'+idx);
           var test1 = JSON.parse(test);
           if(test1 != null){
             this.test2.push(test1);
-          }
-        
-          
+          }  
         }
-        debugger
+        
         if (this.getCartList.length == 0 && this.test2.length > 0) {
           this.test2.forEach(element => {
-            this.getCartList.push(element);
+            if(this.getCartList.length >0){
+              if(this.getCartList[0].id != element.id){
+                this.getCartList.push(element);
+              }
+            }
+            else{
+              this.getCartList.push(element);
+            }
+           
           });
-          //  this.carttotal = this.carttotal + this.getCartList[0].productPrice;
+          for(let p=0;p<this.getCartList.length;p++){
+            
+            if(p < this.getCartList.length-1){
+              if(this.getCartList[p].id == this.getCartList[p+1].id){
+                this.getCartList.splice(p,1);
+              }
+            }
+         
+            
+          }
+          if(this.getCartList.length >1){
+            this.getCartList.forEach(element=>{
+              this.GrandTotal = this.GrandTotal + element.productPrice;
+            })
+          }
+          else{
+            this.GrandTotal = this.GrandTotal + this.getCartList[0].productPrice;
+          }
+          
         }
         else {
-          debugger
+          
           if(this.test2.length >0){
+            debugger
+            var i = 0;
+            var j = 0;
             this.test2.forEach(element => {
               this.getCartList.forEach((element1 => {
+               
+                debugger
                 if (element.id != element1.id) {
                   i++;
                 }
@@ -115,24 +143,30 @@ export class CartComponent implements OnInit {
                 }
               }));
               if (i > 0 && j == 0) {
+                i=0;
+                j=0;
                 this.getCartList.push(element);
-                // this.getCartList.forEach(element => {
-                //   this.carttotal = this.carttotal + element.productPrice;
-                // })
+                this.getCartList.forEach(element => {
+                  this.GrandTotal = this.GrandTotal + element.productPrice;
+                })
               }
-              // else {
-              //   this.getCartList.forEach(element => {
-              //     this.carttotal = this.carttotal + element.productPrice;
-              //   })
-              // }
+              else {
+                i=0;
+                j=0;
+                this.getCartList.forEach(element => {
+                  this.GrandTotal = this.GrandTotal + element.productPrice;
+                })
+              }
             });
           }
         
         }
+      
 
 
 
       }
+     
     }
     
   }

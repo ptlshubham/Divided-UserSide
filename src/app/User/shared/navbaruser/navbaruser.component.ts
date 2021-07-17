@@ -207,6 +207,9 @@ export class NavbaruserComponent implements OnInit {
       this.navbaruserService.removeCart(id).subscribe((req) => {
         this.carttotal = this.carttotal - this.getCartList[index].productPrice;
         this.getCartList.splice(index, 1);
+        if(this.getCartList.length ==0 && localStorage.getItem('UserId') == undefined){
+          localStorage.clear();
+        }
         this.toaster.open({ text: 'Product remove from Cart Successfully.', caption: 'Product', type: 'dark', duration: 4000, position: 'bottom-center' });
       })
     }
