@@ -1,12 +1,15 @@
 <div class="main-content">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Recent Order List</h4>
-            <div class="col-md-4 ml-auto">
-                <button type="submit" style="margin-top: -75px;" class="btn btn-info btn-round">
-                    Accept Selected</button>
+            <div class="row">
+                <div class="col-md-5">
+                    <h4 class="card-title">Recent Order List</h4>
+                </div>
+                <div class="ml-md-auto">
+                    <button type="submit" class="btn btn-info btn-round">
+                        Accept Selected</button>
+                </div>
             </div>
-
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -118,20 +121,23 @@
                                 <div class="col-sm-3">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="index" name="index"
-                                            [(ngModel)]="Orderview.index" [ngModelOptions]="{standalone: true}" disabled>
+                                            [(ngModel)]="Orderview.index" [ngModelOptions]="{standalone: true}"
+                                            disabled>
                                     </div>
                                 </div>
                                 <label class="col-sm-1 col-form-label">Customer Name</label>
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" id="username" name="username"  [(ngModel)]="Orderview.username" disabled>
+                                        <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"
+                                            id="username" name="username" [(ngModel)]="Orderview.username" disabled>
                                     </div>
                                 </div>
                                 <label class="col-sm-1 col-form-label">Delivery Address</label>
                                 <div class="col-sm-3">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="dilveryAddress"
-                                            name="dilveryAddress" [ngModelOptions]="{standalone: true}"  [(ngModel)]="Orderview.userAdd" disabled>
+                                            name="dilveryAddress" [ngModelOptions]="{standalone: true}"
+                                            [(ngModel)]="Orderview.userAdd" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -140,8 +146,9 @@
                                 <label class="col-sm-1 col-form-label">Product Name</label>
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" 
-                                            id="productName" name="productName" [ngModelOptions]="{standalone: true}"  [(ngModel)]="Orderview.brandName" disabled>
+                                        <input type="text" class="form-control" id="productName" name="productName"
+                                            [ngModelOptions]="{standalone: true}" [(ngModel)]="Orderview.brandName"
+                                            disabled>
                                     </div>
                                 </div>
                                 <label class="col-sm-1 col-form-label">Product Image</label>
@@ -153,7 +160,8 @@
                                 <label class="col-sm-1 col-form-label">Product Price</label>
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="Orderview.productPrice"  disabled>
+                                        <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"
+                                            [(ngModel)]="Orderview.productPrice" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -162,14 +170,16 @@
                                 <label class="col-sm-1 col-form-label">Order Number</label>
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"  [(ngModel)]="Orderview.id"  disabled>
+                                        <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"
+                                            [(ngModel)]="Orderview.id" disabled>
                                     </div>
                                 </div>
 
                                 <label class="col-sm-1 col-form-label">Mode Of Payment</label>
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="Orderview.modeofpayment" disabled>
+                                        <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"
+                                            [(ngModel)]="Orderview.modeofpayment" disabled>
                                     </div>
                                 </div>
 
@@ -187,7 +197,8 @@
                                 <label class="col-sm-1 col-form-label">Transaction Id</label>
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"  [(ngModel)]="Orderview.transactionid"  disabled>
+                                        <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"
+                                            [(ngModel)]="Orderview.transactionid" disabled>
                                     </div>
                                 </div>
 
@@ -212,15 +223,18 @@
                 <div class="modal-footer justify">
                     <div class="row">
                         <div class="col-sm-6">
-                            <button type="button" class="btn btn-info btn-round" (click)="generateInvoicePDF()" ><i class="fa fa-file-pdf-o"></i> Invoice(PDF)</button>
-                        </div>
-                        
-                        <div class="col-sm-3">
-                            <button type="button" class="btn btn-info btn-round" data-dismiss="modal" (click)="acceptOrders(Orderview.id)">Accept</button>
+                            <button type="button" class="btn btn-info btn-round" (click)="generateInvoicePDF()"><i
+                                    class="fa fa-file-pdf-o"></i> Invoice(PDF)</button>
                         </div>
 
                         <div class="col-sm-3">
-                            <button type="button" class="btn btn-danger btn-round" data-dismiss="modal" (click)="rejectedOrders(Orderview.id)">Reject</button>
+                            <button type="button" class="btn btn-info btn-round" data-dismiss="modal"
+                                (click)="acceptOrders(Orderview.id)">Accept</button>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <button type="button" class="btn btn-danger btn-round" data-dismiss="modal"
+                                (click)="rejectedOrders(Orderview.id)">Reject</button>
                         </div>
                     </div>
 

@@ -48,14 +48,12 @@
             </div>
             <div class="card-footer">
                 <div class="row">
-                    <div class="col-md-9"></div>
-                    <div class="col-md-1">
+                    <div class="ml-md-auto">
+                        <button type="submit" class="btn btn-danger btn-round"
+                            (click)="cancelAddImage()">Cancel</button>&nbsp;
                         <button type="submit" class="btn btn-info btn-round" [disabled]="!productRegForm.form.valid"
-                            id="product-submit" (click)="saveBannersImage()">Submit</button> &nbsp;
-                     
-                    </div>
-                    <div class="col-md-1">
-                        <button type="submit" class="btn btn-info btn-round" (click)="cancelAddImage()">Cancel</button>
+                            id="product-submit" (click)="saveBannersImage()">Submit</button>
+
                     </div>
 
                 </div>
@@ -64,9 +62,14 @@
     </div>
     <div class="card" *ngIf="isAddShow">
         <div class="card-header">
-            <h4 class="card-title">Banners List</h4>
-            <div class="col-md-2 ml-auto">
-                <button type="submit" class="btn btn-info btn-round" (click)="addNewImages()">Add New</button>
+            <div class="row">
+                <div class="col-sm-5">
+                    <h4 class="card-title">Banners List</h4>
+                </div>
+                <div class="ml-md-auto">
+                    <button type="submit" class="btn btn-info btn-round" (click)="addNewImages()">Add New
+                        Banner</button>
+                </div>
             </div>
         </div>
         <div class="card-body">

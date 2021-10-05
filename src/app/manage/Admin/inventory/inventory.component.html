@@ -103,54 +103,58 @@
                 <div class="col-md-4">
                     <h4 class="card-title">Inventory Managment</h4>
                 </div>
-                <div class="col-md-6" *ngIf="!Chagesproduct.length >0"></div>
-                
-                <div class="col-md-1" *ngIf="Chagesproduct.length >0">
+                <!-- <div class="col-md-6" *ngIf="!Chagesproduct.length >0"></div> -->
+
+                <div class="ml-md-auto" *ngIf="Chagesproduct.length >0">
                     <!-- <button type="submit" class="btn btn-info btn-round" (click)="AddToNewArrival()">New
                         Arrivals</button> -->
-                        <label for="arrival">Arrivals</label>
-                        <bSwitch [switch-on-color]="'primary'" [switch-off-color]="'primary'" [ngClass]="status ? 'success' : 'danger'"
-                                    id="AddToNewArrival" name="AddToNewArrival" (click)="AddToNewArrival()" [(ngModel)]="addnewarrival">
-                                </bSwitch>
+                    <label for="arrival">Arrivals</label>
+                    <br>
+                    <bSwitch [switch-on-color]="'primary'" [switch-off-color]="'primary'"
+                        [ngClass]="status ? 'success' : 'danger'" id="AddToNewArrival" name="AddToNewArrival"
+                        (click)="AddToNewArrival()" [(ngModel)]="addnewarrival">
+                    </bSwitch>
                 </div>
-                <div class="col-md-1" *ngIf="Chagesproduct.length >0">
+                <div class="ml-md-auto" *ngIf="Chagesproduct.length >0">
                     <!-- <button type="submit" class="btn btn-info btn-round" (click)="AddToBestProduct()">Best
                         Product</button> -->
-                        <label for="best">Add Best</label>
-                        <br>
-                        <bSwitch [switch-on-color]="'primary'" [switch-off-color]="'primary'"
-                        id="AddToBestProduct" name="AddToBestProduct" (click)="AddToBestProduct()" [(ngModel)]="addbestprdt">
+                    <label for="best">Add Best</label>
+                    <br>
+                    <bSwitch [switch-on-color]="'primary'" [switch-off-color]="'primary'" id="AddToBestProduct"
+                        name="AddToBestProduct" (click)="AddToBestProduct()" [(ngModel)]="addbestprdt">
                     </bSwitch>
                 </div>
-                <div class="col-md-1" *ngIf="Chagesproduct.length >0">
+                <div class="ml-md-auto" *ngIf="Chagesproduct.length >0">
                     <!-- <button type="submit" class="btn btn-info btn-round" (click)="AddToHotProduct()">Hot
                         Product</button> -->
-                        <label for="hot">Add Hot</label>
-                        <br>
-                        <bSwitch [switch-on-color]="'primary'" [switch-off-color]="'primary'"
-                        id="AddToHotProduct" name="AddToHotProduct" (click)="AddToHotProduct()" [(ngModel)]="addhotprdt">
+                    <label for="hot">Add Hot</label>
+                    <br>
+                    <bSwitch [switch-on-color]="'primary'" [switch-off-color]="'primary'" id="AddToHotProduct"
+                        name="AddToHotProduct" (click)="AddToHotProduct()" [(ngModel)]="addhotprdt">
                     </bSwitch>
                 </div>
-                <div class="col-md-1" *ngIf="Chagesproduct.length >0">
+                <div class="ml-md-auto" *ngIf="Chagesproduct.length >0">
                     <!-- <button type="submit" class="btn btn-info btn-round" (click)="AddToSale()" data-toggle="modal"
                         data-target="#saleModal">Sale on Product</button> -->
-                        <label for="sale">Add Sale</label>
-                        <br>
-                        <bSwitch [switch-on-color]="'primary'" [switch-off-color]="'primary'"
-                        id="AddToSale" name="AddToSale" (click)="AddToSale()" [(ngModel)]="addsale">
+                    <label for="sale">Add Sale</label>
+                    <br>
+                    <bSwitch [switch-on-color]="'primary'" [switch-off-color]="'primary'" id="AddToSale"
+                        name="AddToSale" (click)="AddToSale()" [(ngModel)]="addsale">
                     </bSwitch>
                 </div>
-                <div class="col-md-1" *ngIf="Chagesproduct.length >0">
+                <div class="ml-md-auto" *ngIf="Chagesproduct.length >0">
                     <button type="submit" class="btn btn-danger btn-round" (click)="removeProduct()">Delete
                         Product</button>
                 </div>
-                <div class="col-md-1" *ngIf="Chagesproduct.length >0 && Chagesproduct.length <=1">
-                    <button type="submit" class="btn btn-warning btn-round" (click)="editproduct()">edit Product</button>
+                <div class="ml-md-auto" *ngIf="Chagesproduct.length >0 && Chagesproduct.length <=1">
+                    <button type="submit" class="btn btn-warning btn-round" (click)="editproduct()">edit
+                        Product</button>
                 </div>
-                <div class="col-md-1">
-                    <button type="submit" class="btn btn-info btn-round" routerLink="/manage/category">Add Product</button>
+                <div class="ml-md-auto">
+                    <button type="submit" class="btn btn-info btn-round" routerLink="/manage/category">Add
+                        Product</button>
                 </div>
-            </div   >
+            </div>
         </div>
         <div class="modal fade" id="saleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
             aria-hidden="true">
@@ -335,25 +339,32 @@
                         <td class="text-center">
                             <table id="datatable" cellspacing="0" width="30%">
                                 <thead>
-                                    <tr >
-                                        <th class="text-center" *ngIf="p.sizeList.length >=1">{{p.sizeList[0].size}}</th>
-                                        <th class="text-center"  *ngIf="p.sizeList.length >=2">{{p.sizeList[1].size}}</th>
-                                        <th class="text-center"  *ngIf="p.sizeList.length >=3">{{p.sizeList[2].size}}</th>
-                                        <th class="text-center"  *ngIf="p.sizeList.length >=4">{{p.sizeList[3].size}}</th>
-                                        <th class="text-center"  *ngIf="p.sizeList.length >=5">{{p.sizeList[4].size}}</th>
-                                        <th class="text-center"  *ngIf="p.sizeList.length >=6">{{p.sizeList[5].size}}</th>
-                                        <th class="text-center"  *ngIf="p.sizeList.length >=7">{{p.sizeList[6].size}}</th>
+                                    <tr>
+                                        <th class="text-center" *ngIf="p.sizeList.length >=1">{{p.sizeList[0].size}}
+                                        </th>
+                                        <th class="text-center" *ngIf="p.sizeList.length >=2">{{p.sizeList[1].size}}
+                                        </th>
+                                        <th class="text-center" *ngIf="p.sizeList.length >=3">{{p.sizeList[2].size}}
+                                        </th>
+                                        <th class="text-center" *ngIf="p.sizeList.length >=4">{{p.sizeList[3].size}}
+                                        </th>
+                                        <th class="text-center" *ngIf="p.sizeList.length >=5">{{p.sizeList[4].size}}
+                                        </th>
+                                        <th class="text-center" *ngIf="p.sizeList.length >=6">{{p.sizeList[5].size}}
+                                        </th>
+                                        <th class="text-center" *ngIf="p.sizeList.length >=7">{{p.sizeList[6].size}}
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td  *ngIf="p.sizeList.length >=1">{{p.sizeList[0].quantity}}</td>
-                                        <td  *ngIf="p.sizeList.length >=2">{{p.sizeList[1].quantity}}</td>
-                                        <td  *ngIf="p.sizeList.length >=3">{{p.sizeList[2].quantity}}</td>
-                                        <td  *ngIf="p.sizeList.length >=4">{{p.sizeList[3].quantity}}</td>
-                                        <td  *ngIf="p.sizeList.length >=5">{{p.sizeList[4].quantity}}</td>
-                                        <td  *ngIf="p.sizeList.length >=6">{{p.sizeList[5].quantity}}</td>
-                                        <td  *ngIf="p.sizeList.length >=7">{{p.sizeList[6].quantity}}</td>
+                                        <td *ngIf="p.sizeList.length >=1">{{p.sizeList[0].quantity}}</td>
+                                        <td *ngIf="p.sizeList.length >=2">{{p.sizeList[1].quantity}}</td>
+                                        <td *ngIf="p.sizeList.length >=3">{{p.sizeList[2].quantity}}</td>
+                                        <td *ngIf="p.sizeList.length >=4">{{p.sizeList[3].quantity}}</td>
+                                        <td *ngIf="p.sizeList.length >=5">{{p.sizeList[4].quantity}}</td>
+                                        <td *ngIf="p.sizeList.length >=6">{{p.sizeList[5].quantity}}</td>
+                                        <td *ngIf="p.sizeList.length >=7">{{p.sizeList[6].quantity}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -366,12 +377,12 @@
                             </div>
                         </td> -->
                         <td class="text-center">
-                            <button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm" 
-                            data-toggle="modal" data-target="#noticeModal" >
-                                    <i class="fa fa-edit" (click)="restokProduct(p,i)"></i>
-                                </button>
+                            <button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm"
+                                data-toggle="modal" data-target="#noticeModal">
+                                <i class="fa fa-edit" (click)="restokProduct(p,i)"></i>
+                            </button>
                             <button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm"
-                            (click)="removeProduct(p,i)">
+                                (click)="removeProduct(p,i)">
                                 <i class="fa fa-times"></i>
                             </button>
                             <!-- <button type="button" title="View" data-toggle="modal" data-target="#noticeModal"
