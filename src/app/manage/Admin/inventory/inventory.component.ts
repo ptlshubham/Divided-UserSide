@@ -30,24 +30,24 @@ export class InventoryComponent implements OnInit {
   selectClothSize: any;
   model: Date;
   restock: any = {};
-  index:any;
-  selectedCheck:boolean=false;
+  index: any;
+  selectedCheck: boolean = false;
   popularProduct: boolean = true;
   addSelectFields: any = [];
   value = 0;
   selectedCat: any;
   selectedSubCat: any;
   selectedSubProCat: any;
-  maincatid:any;
-  subcatid:any;
-  subtosubid:any;
-  isdef:boolean=true;
-  isntdef:boolean=false;
-  selectedCategory:any;
-  addnewarrival:boolean=false;
-  addbestprdt:boolean=false;
-  addhotprdt:boolean=false;
-  addsale:boolean=false;
+  maincatid: any;
+  subcatid: any;
+  subtosubid: any;
+  isdef: boolean = true;
+  isntdef: boolean = false;
+  selectedCategory: any;
+  addnewarrival: boolean = false;
+  addbestprdt: boolean = false;
+  addhotprdt: boolean = false;
+  addsale: boolean = false;
 
   public category: Category[] = [];
   public subcategory: Category[] = [];
@@ -58,7 +58,7 @@ export class InventoryComponent implements OnInit {
 
     private categoryService: CategoryService,
     private inventoryService: InventoryService,
-    private router:Router
+    private router: Router
   ) {
     this.productCategory = [
       {
@@ -71,7 +71,7 @@ export class InventoryComponent implements OnInit {
         name: 'New Arrivals',
       },
       {
-        name:'Best Product'
+        name: 'Best Product'
       }
 
     ]
@@ -90,59 +90,71 @@ export class InventoryComponent implements OnInit {
       });
     }
   }
-  selectProductCategory(name){
+  selectProductCategory(name) {
     this.selectedCategory = name;
-    if(name == 'Hot Product'){
-      let data={
-        filter:'hot'
+    if (name == 'Hot Product') {
+      let data = {
+        filter: 'hot'
       }
-      this.inventoryService.getFilterProduct(data).subscribe((data:any)=>{
+      this.inventoryService.getFilterProduct(data).subscribe((data: any) => {
         this.product = data;
-      this.product.forEach(element => {
-        this.inventoryService.getSize(element.id).subscribe((data:any)=>{
-          element.sizeList = data;
-        })
-      });
+        for (let i = 0; i < this.product.length; i++) {
+          this.product[i].index = i + 1;
+        }
+        this.product.forEach(element => {
+          this.inventoryService.getSize(element.id).subscribe((data: any) => {
+            element.sizeList = data;
+          })
+        });
 
       })
     }
-    else if(name == 'Best Product'){
-      let data={
-        filter:'best'
+    else if (name == 'Best Product') {
+      let data = {
+        filter: 'best'
       }
-      this.inventoryService.getFilterProduct(data).subscribe((data:any)=>{
+      this.inventoryService.getFilterProduct(data).subscribe((data: any) => {
         this.product = data;
-      this.product.forEach(element => {
-        this.inventoryService.getSize(element.id).subscribe((data:any)=>{
-          element.sizeList = data;
-        })
-      });
+        for (let i = 0; i < this.product.length; i++) {
+          this.product[i].index = i + 1;
+        }
+        this.product.forEach(element => {
+          this.inventoryService.getSize(element.id).subscribe((data: any) => {
+            element.sizeList = data;
+          })
+        });
       })
     }
-    else if(name == 'Sale Product'){
-      let data={
-        filter:'sale'
+    else if (name == 'Sale Product') {
+      let data = {
+        filter: 'sale'
       }
-      this.inventoryService.getFilterProduct(data).subscribe((data:any)=>{
+      this.inventoryService.getFilterProduct(data).subscribe((data: any) => {
         this.product = data;
-      this.product.forEach(element => {
-        this.inventoryService.getSize(element.id).subscribe((data:any)=>{
-          element.sizeList = data;
-        })
-      });
+        for (let i = 0; i < this.product.length; i++) {
+          this.product[i].index = i + 1;
+        }
+        this.product.forEach(element => {
+          this.inventoryService.getSize(element.id).subscribe((data: any) => {
+            element.sizeList = data;
+          })
+        });
       })
     }
-    else{
-      let data={
-        filter:'new'
+    else {
+      let data = {
+        filter: 'new'
       }
-      this.inventoryService.getFilterProduct(data).subscribe((data:any)=>{
+      this.inventoryService.getFilterProduct(data).subscribe((data: any) => {
         this.product = data;
-      this.product.forEach(element => {
-        this.inventoryService.getSize(element.id).subscribe((data:any)=>{
-          element.sizeList = data;
-        })
-      });
+        for (let i = 0; i < this.product.length; i++) {
+          this.product[i].index = i + 1;
+        }
+        this.product.forEach(element => {
+          this.inventoryService.getSize(element.id).subscribe((data: any) => {
+            element.sizeList = data;
+          })
+        });
       })
     }
     // this.productCategory.forEach(element => {
@@ -151,7 +163,7 @@ export class InventoryComponent implements OnInit {
     //   }
     // })
   }
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     $('#datatable').DataTable({
       "pagingType": "full_numbers",
       "lengthMenu": [
@@ -171,7 +183,7 @@ export class InventoryComponent implements OnInit {
       this.category = data;
     });
   }
-  editproduct(){
+  editproduct() {
     this.router.navigate(['manage/category'], {
       queryParams: {
         value: JSON.stringify(this.Chagesproduct)
@@ -183,15 +195,15 @@ export class InventoryComponent implements OnInit {
     this.subcatid = null;
     this.subToSubCat = null;
     this.maincatid = id;
-    let data={
-      maincatid:this.maincatid,
-      catid:null,
-      subid:null
+    let data = {
+      maincatid: this.maincatid,
+      catid: null,
+      subid: null
     }
     this.categoryService.GetFilterProduct(data).subscribe(data => {
       this.product = data;
       this.product.forEach(element => {
-        this.inventoryService.getSize(element.id).subscribe((data:any)=>{
+        this.inventoryService.getSize(element.id).subscribe((data: any) => {
           element.sizeList = data;
         })
       });
@@ -207,9 +219,9 @@ export class InventoryComponent implements OnInit {
   }
   getSubCategory(id) {
     this.subToSubCat = id;
-    let data={
-      maincatid:this.maincatid,
-      catid:this.subcatid,
+    let data = {
+      maincatid: this.maincatid,
+      catid: this.subcatid,
       subid: this.subToSubCat
     }
 
@@ -217,7 +229,7 @@ export class InventoryComponent implements OnInit {
       this.product = data;
 
       this.product.forEach(element => {
-        this.inventoryService.getSize(element.id).subscribe((data:any)=>{
+        this.inventoryService.getSize(element.id).subscribe((data: any) => {
           element.sizeList = data;
         })
       });
@@ -228,15 +240,15 @@ export class InventoryComponent implements OnInit {
   }
   cateCategory(id) {
     this.subcatid = id;
-    let data={
-      maincatid:this.maincatid,
-      catid:this.subcatid,
-      subid:null
+    let data = {
+      maincatid: this.maincatid,
+      catid: this.subcatid,
+      subid: null
     }
     this.categoryService.GetFilterProduct(data).subscribe(data => {
       this.product = data;
       this.product.forEach(element => {
-        this.inventoryService.getSize(element.id).subscribe((data:any)=>{
+        this.inventoryService.getSize(element.id).subscribe((data: any) => {
           element.sizeList = data;
         })
       });
@@ -257,9 +269,9 @@ export class InventoryComponent implements OnInit {
   subProCategory(id) {
     this.subToSubCat = id;
     this.subToSubCat = id;
-    let data={
-      maincatid:this.maincatid,
-      catid:this.subcatid,
+    let data = {
+      maincatid: this.maincatid,
+      catid: this.subcatid,
       subid: this.subToSubCat
     }
 
@@ -267,7 +279,7 @@ export class InventoryComponent implements OnInit {
       this.product = data;
 
       this.product.forEach(element => {
-        this.inventoryService.getSize(element.id).subscribe((data:any)=>{
+        this.inventoryService.getSize(element.id).subscribe((data: any) => {
           element.sizeList = data;
         })
       });
@@ -281,21 +293,21 @@ export class InventoryComponent implements OnInit {
   }
   addSelectSize(i) {
 
-    let data={
-      productid:this.restock.id,
-      size:'',
-      quantity:'0',
-      soldquantity:0
+    let data = {
+      productid: this.restock.id,
+      size: '',
+      quantity: '0',
+      soldquantity: 0
     }
-    this.addSelectFields=[];
-    if(this.isntdef == false){
+    this.addSelectFields = [];
+    if (this.isntdef == false) {
       this.isntdef = true;
       this.isdef = false;
       // this.restock.sizeList=data;
       this.addSelectFields = this.restock.sizeList;
       this.addSelectFields.push(data);
     }
-    else{
+    else {
       this.isntdef = false;
       this.isdef = true;
       this.addSelectFields = this.restock.sizeList;
@@ -310,8 +322,11 @@ export class InventoryComponent implements OnInit {
 
     this.inventoryService.getProduct().subscribe((data: any) => {
       this.product = data;
+      for (let i = 0; i < this.product.length; i++) {
+        this.product[i].index = i + 1;
+      }
       this.product.forEach(element => {
-        this.inventoryService.getSize(element.id).subscribe((data:any)=>{
+        this.inventoryService.getSize(element.id).subscribe((data: any) => {
           element.sizeList = data;
         })
       })
@@ -335,57 +350,57 @@ export class InventoryComponent implements OnInit {
   }
   selectAll(event) {
 
-    if(event==true){
-      this.selectedCheck=false;
+    if (event == true) {
+      this.selectedCheck = false;
       this.inventoryService.getProduct().subscribe((data: any) => {
         this.product = data;
         this.product.forEach(element => {
           element.selectedCheck = false;
-          this.inventoryService.getSize(element.id).subscribe((data:any)=>{
+          this.inventoryService.getSize(element.id).subscribe((data: any) => {
             element.sizeList = data;
           })
         })
-        this.Chagesproduct=[];
+        this.Chagesproduct = [];
       });
     }
-    else{
-      this.selectedCheck=true;
+    else {
+      this.selectedCheck = true;
       this.inventoryService.getProduct().subscribe((data: any) => {
         this.product = data;
         this.product.forEach(element => {
           element.selectedCheck = true;
-          this.inventoryService.getSize(element.id).subscribe((data:any)=>{
+          this.inventoryService.getSize(element.id).subscribe((data: any) => {
             element.sizeList = data;
           })
         })
-        this.Chagesproduct=this.product;
+        this.Chagesproduct = this.product;
       });
     }
 
   }
-  onChanges(sel,data,idx){
+  onChanges(sel, data, idx) {
 
-    if(sel == false){
+    if (sel == false) {
       this.product[idx].selectedCheck = true;
       this.Chagesproduct.push(data);
     }
-    else{
+    else {
       this.product[idx].selectedCheck = false;
-      for(let i=0;i<this.Chagesproduct.length;i++){
-        if(this.Chagesproduct[i].id == data.id){
-          this.Chagesproduct.splice(i,1);
+      for (let i = 0; i < this.Chagesproduct.length; i++) {
+        if (this.Chagesproduct[i].id == data.id) {
+          this.Chagesproduct.splice(i, 1);
         }
       }
     }
 
 
   }
-  restokProduct(data,ind) {
+  restokProduct(data, ind) {
 
     this.restock = data;
-    this.restock.index = ind+1;
+    this.restock.index = ind + 1;
     this.getClothSize();
-    this.addSelectFields =this.restock.sizeList;
+    this.addSelectFields = this.restock.sizeList;
 
   }
   submitClothSize(id, index) {
@@ -414,64 +429,64 @@ export class InventoryComponent implements OnInit {
   }
 
   //filter code from here
-  AddToNewArrival(){
-    if(this.addnewarrival == false){
+  AddToNewArrival() {
+    if (this.addnewarrival == false) {
       this.addnewarrival = true;
       this.addbestprdt = false;
       this.addsale = false;
       this.addhotprdt = false;
-      this.inventoryService.addToNewArrivals(this.Chagesproduct).subscribe(data=>{
+      this.inventoryService.addToNewArrivals(this.Chagesproduct).subscribe(data => {
         alert("added");
       })
     }
-    else{
+    else {
       this.addnewarrival = false;;
     }
 
 
   }
-  AddToBestProduct(){
-    if(this.addbestprdt == false){
+  AddToBestProduct() {
+    if (this.addbestprdt == false) {
       this.addnewarrival = false;
       this.addbestprdt = true;
       this.addsale = false;
       this.addhotprdt = false;
-      this.inventoryService.addToBestProduct(this.Chagesproduct).subscribe(data=>{
+      this.inventoryService.addToBestProduct(this.Chagesproduct).subscribe(data => {
         alert("added");
       })
     }
-    else{
+    else {
       this.addbestprdt = false;
     }
 
   }
-  AddToHotProduct(){
-    if(this.addhotprdt == false){
+  AddToHotProduct() {
+    if (this.addhotprdt == false) {
       this.addnewarrival = false;
       this.addbestprdt = false;
       this.addsale = false;
       this.addhotprdt = true;
-      this.inventoryService.addTohotProduct(this.Chagesproduct).subscribe(data=>{
+      this.inventoryService.addTohotProduct(this.Chagesproduct).subscribe(data => {
         alert("added");
       })
     }
-    else{
+    else {
       this.addhotprdt = false;
     }
 
   }
-  AddToSale(){
+  AddToSale() {
 
-    if(this.addsale == false){
+    if (this.addsale == false) {
       this.addnewarrival = false;
       this.addbestprdt = false;
       this.addsale = true;
       this.addhotprdt = false;
-      this.inventoryService.addToSale(this.Chagesproduct).subscribe(data=>{
+      this.inventoryService.addToSale(this.Chagesproduct).subscribe(data => {
         alert("added");
       })
     }
-    else{
+    else {
       this.addsale = false;
     }
 

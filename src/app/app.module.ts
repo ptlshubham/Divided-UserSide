@@ -26,9 +26,9 @@ import { GalleryModule } from 'ng-gallery';
 import { ImageViewerModule } from '@hallysonh/ngx-imageviewer';
 import { LightboxModule } from 'ng-gallery/lightbox';
 import { ToastNotificationsModule } from "ngx-toast-notifications";
-import { SocialLoginModule, SocialAuthServiceConfig  } from "angularx-social-login";
+import { SocialLoginModule, SocialAuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 export function tokenGetter() {
@@ -61,7 +61,8 @@ export function tokenGetter() {
         LightboxModule,
         ImageViewerModule,
         ToastNotificationsModule,
-        SocialLoginModule
+        SocialLoginModule,
+        NgxPaginationModule
 
 
     ],

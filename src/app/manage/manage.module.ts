@@ -4,7 +4,7 @@ import { ManageRoutingModule } from './manage-routing.module';
 
 import { FrontComponent } from '../manage/Admin/layouts/front/front.component';
 
-
+import { NgxPaginationModule } from 'ngx-pagination';
 import { SidebarModule } from '../manage/Admin/sidebar/sidebar.module';
 import { FixedPluginModule } from '../manage/Admin/shared/fixedplugin/fixedplugin.module';
 import { FooterModule } from '../manage/Admin/shared/footer/footer.module';
@@ -27,6 +27,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
         FooterModule,
         FixedPluginModule,
         ColorPickerModule,
+        NgxPaginationModule
     ]
 })
 export class ManageModule { }

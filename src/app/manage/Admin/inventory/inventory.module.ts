@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -13,13 +13,14 @@ import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
   declarations: [InventoryComponent],
   imports: [
     CommonModule,
+    NgxPaginationModule,
     NgbModule,
     FormsModule,
     JwBootstrapSwitchNg2Module,
     RouterModule.forChild([
       {
-        path:'inventory',
-        component:InventoryComponent
+        path: 'inventory',
+        component: InventoryComponent
       }
     ])
   ]
